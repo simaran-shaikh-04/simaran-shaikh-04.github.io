@@ -7,431 +7,220 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg:       #07090f;
-      --bg2:      #0d1117;
-      --surface:  #131926;
-      --surface2: #1a2236;
-      --accent:   #3b82f6;
-      --accent2:  #60a5fa;
-      --gold:     #f59e0b;
-      --gold2:    #fbbf24;
-      --green:    #10b981;
-      --red:      #ef4444;
-      --text:     #e2e8f0;
-      --muted:    #8898aa;
-      --border:   rgba(59,130,246,0.13);
-      --glow:     rgba(59,130,246,0.06);
+      --bg:#07090f;--bg2:#0d1117;--surface:#131926;--surface2:#1a2236;
+      --accent:#3b82f6;--accent2:#60a5fa;--gold:#f59e0b;--gold2:#fbbf24;
+      --green:#10b981;--text:#e2e8f0;--muted:#8898aa;
+      --border:rgba(59,130,246,0.13);
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+    .ambient{position:fixed;inset:0;pointer-events:none;z-index:0;
+      background:radial-gradient(ellipse 700px 500px at 80% -10%,rgba(59,130,246,0.08) 0%,transparent 70%),
+                radial-gradient(ellipse 500px 400px at -10% 80%,rgba(245,158,11,0.05) 0%,transparent 70%);}
+    .grid-bg{position:fixed;inset:0;pointer-events:none;z-index:0;
+      background-image:linear-gradient(rgba(59,130,246,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,0.03) 1px,transparent 1px);
+      background-size:56px 56px;}
 
-    /* ── AMBIENT LAYER ── */
-    .ambient {
-      position: fixed; inset: 0; pointer-events: none; z-index: 0;
-      background:
-        radial-gradient(ellipse 700px 500px at 80% -10%, rgba(59,130,246,0.08) 0%, transparent 70%),
-        radial-gradient(ellipse 500px 400px at -10% 80%, rgba(245,158,11,0.05) 0%, transparent 70%);
-    }
-    .grid-bg {
-      position: fixed; inset: 0; pointer-events: none; z-index: 0;
-      background-image:
-        linear-gradient(rgba(59,130,246,0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(59,130,246,0.035) 1px, transparent 1px);
-      background-size: 56px 56px;
-    }
+    /* NAV */
+    nav{position:fixed;top:0;width:100%;z-index:200;display:flex;justify-content:space-between;align-items:center;
+      padding:16px 64px;background:rgba(7,9,15,0.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+    .nav-logo{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--text);}
+    .nav-logo em{color:var(--accent);font-style:normal;}
+    .nav-links{display:flex;gap:24px;list-style:none;}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:0.78rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;transition:color 0.2s;}
+    .nav-links a:hover{color:var(--accent2);}
+    .nav-right{display:flex;gap:10px;align-items:center;}
+    .nav-cta{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:6px;background:#0a66c2;color:#fff;font-size:0.78rem;font-weight:600;text-decoration:none;transition:all 0.2s;}
+    .nav-cta:hover{background:#0958a8;transform:translateY(-1px);}
+    .nav-resume{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:6px;background:transparent;color:var(--text);font-size:0.78rem;font-weight:600;text-decoration:none;border:1px solid var(--border);transition:all 0.2s;}
+    .nav-resume:hover{border-color:var(--accent);color:var(--accent2);transform:translateY(-1px);}
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; width: 100%; z-index: 200;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 16px 64px;
-      background: rgba(7,9,15,0.82);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15rem; font-weight: 700;
-      color: var(--text); letter-spacing: -0.01em;
-    }
-    .nav-logo em { color: var(--accent); font-style: normal; }
-    .nav-links { display: flex; gap: 28px; list-style: none; }
-    .nav-links a {
-      color: var(--muted); text-decoration: none;
-      font-size: 0.8rem; font-weight: 500;
-      letter-spacing: 0.06em; text-transform: uppercase;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--accent2); }
-    .nav-cta {
-      display: inline-flex; align-items: center; gap: 7px;
-      padding: 8px 18px; border-radius: 6px;
-      background: #0a66c2; color: #fff;
-      font-size: 0.8rem; font-weight: 600;
-      text-decoration: none; transition: all 0.2s;
-    }
-    .nav-cta:hover { background: #0958a8; transform: translateY(-1px); }
+    /* HERO */
+    .hero{position:relative;z-index:1;min-height:100vh;display:flex;align-items:center;padding:110px 64px 70px;gap:80px;}
+    .hero-text{flex:1;max-width:600px;}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.22);border-radius:100px;padding:6px 14px;font-size:0.72rem;font-weight:600;color:var(--accent2);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:24px;animation:fadeUp 0.6s ease both;}
+    .pulse{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 2s infinite;}
+    @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,0.5);}50%{box-shadow:0 0 0 6px rgba(16,185,129,0);}}
+    h1.name{font-family:'Playfair Display',serif;font-size:clamp(3rem,5vw,4.6rem);font-weight:900;line-height:1.0;letter-spacing:-0.03em;animation:fadeUp 0.6s 0.08s ease both;}
+    h1.name .blue{color:var(--accent);}
+    .title-line{margin-top:14px;font-family:'DM Mono',monospace;font-size:0.82rem;color:var(--gold);letter-spacing:0.05em;animation:fadeUp 0.6s 0.15s ease both;}
+    .hero-bio{margin-top:18px;font-size:0.97rem;color:var(--muted);line-height:1.78;font-weight:300;animation:fadeUp 0.6s 0.22s ease both;}
+    .hero-bio strong{color:var(--text);font-weight:500;}
+    .hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;animation:fadeUp 0.6s 0.29s ease both;}
+    .tag{background:var(--surface);border:1px solid var(--border);border-radius:5px;padding:4px 11px;font-size:0.74rem;font-family:'DM Mono',monospace;color:var(--muted);}
+    .hero-stats{display:flex;gap:28px;margin-top:30px;flex-wrap:wrap;animation:fadeUp 0.6s 0.35s ease both;}
+    .hstat{border-left:2px solid var(--accent);padding-left:14px;}
+    .hstat .num{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;color:var(--text);line-height:1;}
+    .hstat .lbl{font-size:0.7rem;color:var(--muted);margin-top:3px;}
+    .hero-btns{display:flex;gap:10px;margin-top:32px;flex-wrap:wrap;animation:fadeUp 0.6s 0.41s ease both;}
+    .btn{display:inline-flex;align-items:center;gap:7px;padding:11px 20px;border-radius:8px;font-size:0.85rem;font-weight:600;text-decoration:none;cursor:pointer;border:none;transition:all 0.2s;}
+    .btn-linkedin{background:#0a66c2;color:#fff;}
+    .btn-linkedin:hover{background:#0958a8;transform:translateY(-2px);box-shadow:0 8px 24px rgba(10,102,194,0.4);}
+    .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border);}
+    .btn-ghost:hover{border-color:var(--accent);color:var(--accent2);transform:translateY(-2px);}
+    .btn-accent{background:var(--accent);color:#fff;}
+    .btn-accent:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(59,130,246,0.35);}
+    .btn-gold{background:rgba(245,158,11,0.12);color:var(--gold2);border:1px solid rgba(245,158,11,0.3);}
+    .btn-gold:hover{background:rgba(245,158,11,0.2);transform:translateY(-2px);}
 
-    /* ── HERO ── */
-    .hero {
-      position: relative; z-index: 1;
-      min-height: 100vh;
-      display: flex; align-items: center;
-      padding: 100px 64px 60px;
-      gap: 80px;
-    }
-    .hero-text { flex: 1; max-width: 580px; }
+    /* PHOTO */
+    .hero-photo{flex-shrink:0;position:relative;display:flex;flex-direction:column;align-items:center;animation:fadeIn 1s 0.5s ease both;}
+    .photo-wrap{position:relative;width:290px;height:290px;}
+    .photo-ring{position:absolute;inset:-14px;border-radius:50%;background:conic-gradient(var(--accent),var(--gold),var(--green),var(--accent));animation:spin 8s linear infinite;-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 2px),white calc(100% - 2px));mask:radial-gradient(farthest-side,transparent calc(100% - 2px),white calc(100% - 2px));}
+    @keyframes spin{to{transform:rotate(360deg);}}
+    .photo-inner{width:290px;height:290px;border-radius:50%;background:linear-gradient(135deg,var(--surface2),#0d1a30);border:3px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;}
+    .photo-inner img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+    .photo-placeholder-icon{opacity:0.3;margin-bottom:8px;}
+    .photo-placeholder-text{font-size:0.68rem;color:var(--muted);opacity:0.45;letter-spacing:0.06em;}
+    .upload-btn{position:absolute;bottom:6px;right:6px;width:38px;height:38px;border-radius:50%;background:var(--accent);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 14px rgba(59,130,246,0.45);}
+    .upload-btn:hover{background:var(--accent2);transform:scale(1.1);}
+    .upload-btn input{display:none;}
+    .location-badge{margin-top:28px;background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:6px 16px;display:inline-flex;align-items:center;gap:6px;font-size:0.74rem;color:var(--muted);}
+    .location-badge span{color:var(--text);font-weight:500;}
 
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(59,130,246,0.09);
-      border: 1px solid rgba(59,130,246,0.22);
-      border-radius: 100px; padding: 6px 14px;
-      font-size: 0.75rem; font-weight: 600;
-      color: var(--accent2); letter-spacing: 0.07em;
-      text-transform: uppercase; margin-bottom: 24px;
-      animation: fadeUp 0.7s ease both;
-    }
-    .pulse { width: 7px; height: 7px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
-    @keyframes pulse {
-      0%,100% { box-shadow: 0 0 0 0 rgba(16,185,129,0.5); }
-      50%      { box-shadow: 0 0 0 6px rgba(16,185,129,0); }
-    }
+    /* SECTIONS */
+    section{position:relative;z-index:1;padding:88px 64px;}
+    .section-header{display:flex;align-items:center;gap:16px;margin-bottom:48px;}
+    .sec-num{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);letter-spacing:0.1em;opacity:0.8;}
+    .section-header h2{font-family:'Playfair Display',serif;font-size:1.85rem;font-weight:700;}
+    .sec-line{flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent);}
 
-    h1.name {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3.2rem, 5.5vw, 5rem);
-      font-weight: 900; line-height: 1.0;
-      letter-spacing: -0.03em;
-      animation: fadeUp 0.7s 0.08s ease both;
-    }
-    h1.name .blue { color: var(--accent); }
+    /* ABOUT */
+    .about-wrap{display:grid;grid-template-columns:1.1fr 0.9fr;gap:52px;align-items:start;}
+    .about-text p{color:var(--muted);line-height:1.8;font-weight:300;margin-bottom:14px;font-size:0.95rem;}
+    .about-text p strong{color:var(--text);font-weight:500;}
+    .seeking-box{margin-top:20px;padding:14px 18px;background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.2);border-radius:10px;}
+    .seeking-box p{color:var(--muted);font-size:0.85rem;line-height:1.6;margin:0;}
+    .seeking-box strong{color:var(--accent2);}
+    .skills-panel{display:flex;flex-direction:column;gap:12px;}
+    .skill-group{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 18px;}
+    .skill-group-title{font-size:0.68rem;font-weight:600;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;}
+    .skill-chips{display:flex;flex-wrap:wrap;gap:7px;}
+    .chip{padding:4px 10px;border-radius:4px;font-size:0.73rem;font-family:'DM Mono',monospace;}
+    .chip-blue{background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);color:var(--accent2);}
+    .chip-gold{background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);color:var(--gold2);}
+    .chip-green{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);color:var(--green);}
+    .chip-muted{background:var(--surface2);border:1px solid var(--border);color:var(--muted);}
+    .chip-purple{background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);color:#a78bfa;}
 
-    .title-line {
-      margin-top: 16px;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.85rem; color: var(--gold);
-      letter-spacing: 0.04em;
-      animation: fadeUp 0.7s 0.15s ease both;
-    }
+    /* EXPERIENCE */
+    .exp-bg{background:var(--bg2);}
+    .timeline{display:flex;flex-direction:column;}
+    .exp-item{display:grid;grid-template-columns:200px 1fr;gap:0 40px;padding:32px 0;border-bottom:1px solid var(--border);}
+    .exp-item:last-child{border-bottom:none;}
+    .exp-meta{padding-top:4px;}
+    .exp-period{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--accent);letter-spacing:0.04em;margin-bottom:5px;}
+    .exp-org{font-size:0.84rem;font-weight:600;color:var(--text);margin-bottom:3px;}
+    .exp-loc{font-size:0.72rem;color:var(--muted);line-height:1.4;}
+    .exp-badges{display:flex;flex-direction:column;gap:5px;margin-top:9px;}
+    .exp-badge{display:inline-block;padding:3px 9px;border-radius:4px;font-size:0.64rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;width:fit-content;}
+    .badge-done{background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);color:var(--accent2);}
+    .badge-captain{background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.25);color:var(--gold2);}
+    .exp-body h3{font-family:'Playfair Display',serif;font-size:1.12rem;font-weight:700;color:var(--text);margin-bottom:2px;line-height:1.3;}
+    .exp-role-sub{font-size:0.78rem;color:var(--muted);margin-bottom:14px;}
+    .exp-points{list-style:none;display:flex;flex-direction:column;gap:7px;}
+    .exp-points li{display:flex;gap:9px;font-size:0.85rem;color:var(--muted);line-height:1.6;}
+    .exp-points li::before{content:'▸';color:var(--accent);flex-shrink:0;font-size:0.66rem;margin-top:4px;}
+    .exp-points li strong{color:var(--text);font-weight:500;}
+    .exp-tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+    .cert-ref{display:inline-flex;align-items:center;gap:5px;margin-top:10px;padding:4px 11px;background:rgba(245,158,11,0.07);border:1px solid rgba(245,158,11,0.2);border-radius:6px;font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--gold2);}
 
-    .hero-bio {
-      margin-top: 20px;
-      font-size: 1.02rem; color: var(--muted);
-      line-height: 1.78; font-weight: 300;
-      animation: fadeUp 0.7s 0.22s ease both;
-    }
-    .hero-bio strong { color: var(--text); font-weight: 500; }
+    /* PROJECTS */
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:20px;}
+    .proj-card-featured{background:linear-gradient(135deg,rgba(59,130,246,0.07),rgba(245,158,11,0.04));border:1px solid rgba(59,130,246,0.28);border-radius:14px;padding:26px;display:flex;flex-direction:column;gap:14px;transition:all 0.25s;position:relative;overflow:hidden;grid-column:span 2;}
+    .proj-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:11px;transition:all 0.25s;position:relative;overflow:hidden;}
+    .proj-card:hover,.proj-card-featured:hover{transform:translateY(-4px);border-color:rgba(59,130,246,0.35);box-shadow:0 18px 44px rgba(0,0,0,0.32);}
+    .proj-top-bar{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--gold));opacity:0;transition:opacity 0.25s;}
+    .proj-card:hover .proj-top-bar,.proj-card-featured:hover .proj-top-bar{opacity:1;}
+    .proj-header{display:flex;justify-content:space-between;align-items:flex-start;}
+    .proj-icon{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;background:rgba(59,130,246,0.09);border:1px solid rgba(59,130,246,0.18);}
+    .proj-links{display:flex;gap:7px;}
+    .proj-link{width:30px;height:30px;border-radius:6px;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--muted);transition:all 0.2s;}
+    .proj-link:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
+    .proj-card h3,.proj-card-featured h3{font-family:'Playfair Display',serif;font-size:1.04rem;font-weight:700;color:var(--text);line-height:1.3;}
+    .proj-card-featured h3{font-size:1.18rem;}
+    .proj-card p,.proj-card-featured p{font-size:0.83rem;color:var(--muted);line-height:1.65;flex:1;}
+    .proj-highlights{display:flex;flex-direction:column;gap:4px;}
+    .proj-hl{display:flex;align-items:flex-start;gap:7px;font-size:0.77rem;color:var(--muted);line-height:1.5;}
+    .proj-hl::before{content:'▸';color:var(--accent);font-size:0.6rem;flex-shrink:0;margin-top:3px;}
+    .proj-stack{display:flex;flex-wrap:wrap;gap:5px;}
+    .featured-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.3);border-radius:100px;padding:3px 10px;font-size:0.65rem;font-weight:600;color:var(--gold2);letter-spacing:0.06em;text-transform:uppercase;}
+    .proj-featured-cols{display:grid;grid-template-columns:1.2fr 0.8fr;gap:20px;align-items:start;}
 
-    .hero-tags {
-      display: flex; flex-wrap: wrap; gap: 9px;
-      margin-top: 24px;
-      animation: fadeUp 0.7s 0.3s ease both;
-    }
-    .tag {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 5px; padding: 4px 11px;
-      font-size: 0.76rem; font-family: 'DM Mono', monospace;
-      color: var(--muted);
-    }
+    /* CERTIFICATES */
+    .certs-bg{background:var(--bg2);}
+    .certs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px;}
+    .cert-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;display:flex;gap:14px;align-items:flex-start;transition:all 0.2s;}
+    .cert-card:hover{border-color:rgba(59,130,246,0.3);transform:translateY(-3px);}
+    .cert-icon{width:40px;height:40px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.15rem;background:var(--surface2);border:1px solid var(--border);}
+    .cert-info h4{font-size:0.87rem;font-weight:600;color:var(--text);margin-bottom:4px;line-height:1.3;}
+    .cert-info p{font-size:0.75rem;color:var(--muted);line-height:1.5;}
+    .cert-id{font-family:'DM Mono',monospace;font-size:0.64rem;color:var(--accent);margin-top:5px;}
+    .cert-links{display:flex;gap:7px;margin-top:10px;}
+    .cert-btn{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:5px;font-size:0.7rem;font-weight:600;text-decoration:none;transition:all 0.2s;font-family:'DM Mono',monospace;}
+    .cert-btn-view{background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);color:var(--accent2);}
+    .cert-btn-view:hover{background:rgba(59,130,246,0.2);}
+    .cert-btn-dl{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);color:var(--green);}
+    .cert-btn-dl:hover{background:rgba(16,185,129,0.2);}
 
-    .hero-stats {
-      display: flex; gap: 28px; margin-top: 32px; flex-wrap: wrap;
-      animation: fadeUp 0.7s 0.36s ease both;
-    }
-    .hstat { border-left: 2px solid var(--accent); padding-left: 14px; }
-    .hstat .num {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem; font-weight: 700;
-      color: var(--text); line-height: 1;
-    }
-    .hstat .lbl { font-size: 0.72rem; color: var(--muted); margin-top: 3px; }
+    /* TESTIMONIALS */
+    .testimonial-wrap{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px;}
+    .tcard{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:26px;display:flex;flex-direction:column;gap:14px;transition:all 0.2s;}
+    .tcard:hover{border-color:rgba(59,130,246,0.3);transform:translateY(-3px);}
+    .tcard-quote{font-size:0.91rem;color:var(--text);line-height:1.75;font-style:italic;font-weight:300;}
+    .tcard-quote::before{content:'\201C';font-size:1.8rem;color:var(--accent);line-height:0;vertical-align:-0.5em;margin-right:4px;}
+    .tcard-quote::after{content:'\201D';font-size:1.8rem;color:var(--accent);line-height:0;vertical-align:-0.5em;margin-left:4px;}
+    .tcard-person{display:flex;align-items:center;gap:12px;padding-top:14px;border-top:1px solid var(--border);}
+    .tcard-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--gold));display:flex;align-items:center;justify-content:center;font-size:0.9rem;font-weight:700;color:#fff;flex-shrink:0;}
+    .tcard-name{font-size:0.87rem;font-weight:600;color:var(--text);}
+    .tcard-role{font-size:0.73rem;color:var(--muted);margin-top:2px;}
 
-    .hero-btns {
-      display: flex; gap: 12px; margin-top: 36px; flex-wrap: wrap;
-      animation: fadeUp 0.7s 0.42s ease both;
-    }
-    .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 12px 24px; border-radius: 8px;
-      font-size: 0.88rem; font-weight: 600;
-      text-decoration: none; cursor: pointer; border: none;
-      transition: all 0.2s; letter-spacing: 0.01em;
-    }
-    .btn-linkedin { background: #0a66c2; color: #fff; }
-    .btn-linkedin:hover { background: #0958a8; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(10,102,194,0.4); }
-    .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
-    .btn-ghost:hover { border-color: var(--accent); color: var(--accent2); transform: translateY(-2px); }
-    .btn-accent { background: var(--accent); color: #fff; }
-    .btn-accent:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(59,130,246,0.35); }
+    /* EDUCATION */
+    .edu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px;}
+    .edu-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px;transition:all 0.2s;}
+    .edu-card:hover{border-color:rgba(59,130,246,0.3);transform:translateY(-3px);}
+    .edu-year{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--accent);letter-spacing:0.06em;margin-bottom:8px;}
+    .edu-card h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:4px;}
+    .edu-degree{font-size:0.78rem;color:var(--text);font-weight:500;margin-top:5px;}
+    .edu-sub{font-size:0.75rem;color:var(--muted);margin-top:6px;line-height:1.5;}
 
-    /* ── PHOTO SIDE ── */
-    .hero-photo {
-      flex-shrink: 0; position: relative;
-      animation: fadeIn 1s 0.5s ease both;
-    }
-    .photo-wrap {
-      position: relative; width: 300px; height: 300px;
-    }
-    .photo-ring {
-      position: absolute; inset: -14px; border-radius: 50%;
-      background: conic-gradient(var(--accent), var(--gold), var(--green), var(--accent));
-      animation: spin 8s linear infinite;
-      -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), white calc(100% - 2px));
-      mask: radial-gradient(farthest-side, transparent calc(100% - 2px), white calc(100% - 2px));
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .photo-inner {
-      width: 300px; height: 300px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--surface2), #0d1a30);
-      border: 3px solid var(--border);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      overflow: hidden; position: relative;
-      cursor: pointer;
-    }
-    .photo-inner img {
-      width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
-    }
-    .photo-placeholder-icon { opacity: 0.35; margin-bottom: 8px; }
-    .photo-placeholder-text { font-size: 0.7rem; color: var(--muted); opacity: 0.5; letter-spacing: 0.06em; }
-    .upload-btn {
-      position: absolute; bottom: 6px; right: 6px;
-      width: 40px; height: 40px; border-radius: 50%;
-      background: var(--accent); border: none;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; transition: all 0.2s;
-      box-shadow: 0 4px 14px rgba(59,130,246,0.45);
-    }
-    .upload-btn:hover { background: var(--accent2); transform: scale(1.1); }
-    .upload-btn input { display: none; }
+    /* CONTACT */
+    .contact-inner{max-width:600px;margin:0 auto;text-align:center;}
+    .contact-inner h2{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;margin-bottom:12px;}
+    .contact-inner .sub{color:var(--muted);font-size:0.96rem;line-height:1.7;margin-bottom:10px;}
+    .open-to{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:26px;}
+    .open-chip{background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:4px 13px;font-size:0.76rem;color:var(--muted);}
+    .contact-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+    .email-line{margin-top:16px;font-family:'DM Mono',monospace;font-size:0.78rem;color:var(--muted);}
+    .email-line a{color:var(--accent2);text-decoration:none;}
 
-    .location-badge {
-      position: absolute; bottom: -16px; left: 50%; transform: translateX(-50%);
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 100px; padding: 6px 16px;
-      display: flex; align-items: center; gap: 6px;
-      font-size: 0.75rem; color: var(--muted);
-      white-space: nowrap;
-    }
-    .location-badge span { color: var(--text); font-weight: 500; }
+    footer{position:relative;z-index:1;text-align:center;padding:22px;font-size:0.74rem;color:var(--muted);border-top:1px solid var(--border);}
 
-    /* ── SECTIONS ── */
-    section { position: relative; z-index: 1; padding: 88px 64px; }
-    .section-header {
-      display: flex; align-items: center; gap: 16px; margin-bottom: 52px;
-    }
-    .sec-num { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--accent); letter-spacing: 0.1em; opacity: 0.8; }
-    .section-header h2 { font-family: 'Playfair Display', serif; font-size: 1.9rem; font-weight: 700; }
-    .sec-line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+    @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.55s ease,transform 0.55s ease;}
+    .reveal.on{opacity:1;transform:none;}
 
-    /* ── ABOUT ── */
-    .about-wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: start; }
-    .about-text p { color: var(--muted); line-height: 1.82; font-weight: 300; margin-bottom: 16px; font-size: 0.97rem; }
-    .about-text p strong { color: var(--text); font-weight: 500; }
-    .seeking-box {
-      margin-top: 24px; padding: 18px 20px;
-      background: rgba(59,130,246,0.06); border: 1px solid rgba(59,130,246,0.2);
-      border-radius: 10px;
-    }
-    .seeking-box p { color: var(--muted); font-size: 0.88rem; line-height: 1.6; margin: 0; }
-    .seeking-box strong { color: var(--accent2); }
-
-    .skills-panel { display: flex; flex-direction: column; gap: 14px; }
-    .skill-group { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; }
-    .skill-group-title { font-size: 0.7rem; font-weight: 600; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
-    .skill-chips { display: flex; flex-wrap: wrap; gap: 8px; }
-    .chip {
-      padding: 4px 11px; border-radius: 4px;
-      font-size: 0.76rem; font-family: 'DM Mono', monospace;
-    }
-    .chip-blue { background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); color: var(--accent2); }
-    .chip-gold { background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.2); color: var(--gold2); }
-    .chip-green { background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); color: var(--green); }
-    .chip-muted { background: var(--surface2); border: 1px solid var(--border); color: var(--muted); }
-
-    /* ── EXPERIENCE ── */
-    .exp-bg { background: var(--bg2); }
-    .timeline { display: flex; flex-direction: column; gap: 0; }
-    .exp-item {
-      display: grid; grid-template-columns: 220px 1fr;
-      gap: 0 40px; padding: 36px 0;
-      border-bottom: 1px solid var(--border);
-      position: relative;
-    }
-    .exp-item:last-child { border-bottom: none; }
-    .exp-meta { padding-top: 4px; }
-    .exp-period {
-      font-family: 'DM Mono', monospace; font-size: 0.75rem;
-      color: var(--accent); letter-spacing: 0.04em; margin-bottom: 6px;
-    }
-    .exp-org { font-size: 0.85rem; font-weight: 600; color: var(--text); margin-bottom: 4px; }
-    .exp-loc { font-size: 0.75rem; color: var(--muted); }
-    .exp-badge {
-      display: inline-block; margin-top: 10px;
-      padding: 3px 9px; border-radius: 4px;
-      font-size: 0.68rem; font-weight: 600;
-      letter-spacing: 0.05em; text-transform: uppercase;
-    }
-    .badge-active { background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.25); color: var(--green); }
-    .badge-done   { background: rgba(59,130,246,0.1);  border: 1px solid rgba(59,130,246,0.2);  color: var(--accent2); }
-
-    .exp-body h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem; font-weight: 700; color: var(--text);
-      margin-bottom: 4px; line-height: 1.3;
-    }
-    .exp-role-sub { font-size: 0.82rem; color: var(--muted); margin-bottom: 16px; }
-    .exp-points { list-style: none; display: flex; flex-direction: column; gap: 9px; }
-    .exp-points li {
-      display: flex; gap: 10px;
-      font-size: 0.88rem; color: var(--muted); line-height: 1.6;
-    }
-    .exp-points li::before { content: '▸'; color: var(--accent); flex-shrink: 0; font-size: 0.7rem; margin-top: 3px; }
-    .exp-points li strong { color: var(--text); font-weight: 500; }
-    .exp-tools {
-      display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px;
-    }
-
-    /* ── PROJECTS ── */
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 22px; }
-    .proj-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 14px; padding: 26px;
-      display: flex; flex-direction: column; gap: 14px;
-      transition: all 0.25s; position: relative; overflow: hidden;
-    }
-    .proj-card::after {
-      content: ''; position: absolute; inset: 0; border-radius: 14px;
-      background: linear-gradient(135deg, rgba(59,130,246,0.03), transparent);
-      opacity: 0; transition: opacity 0.25s;
-    }
-    .proj-card:hover { transform: translateY(-5px); border-color: rgba(59,130,246,0.35); box-shadow: 0 20px 48px rgba(0,0,0,0.35); }
-    .proj-card:hover::after { opacity: 1; }
-    .proj-top-bar {
-      position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--gold));
-      opacity: 0; transition: opacity 0.25s;
-    }
-    .proj-card:hover .proj-top-bar { opacity: 1; }
-    .proj-header { display: flex; justify-content: space-between; align-items: flex-start; }
-    .proj-icon {
-      width: 44px; height: 44px; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.35rem;
-      background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.18);
-    }
-    .proj-links { display: flex; gap: 8px; }
-    .proj-link {
-      width: 32px; height: 32px; border-radius: 6px;
-      background: var(--surface2); border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      text-decoration: none; color: var(--muted); font-size: 0.8rem;
-      transition: all 0.2s;
-    }
-    .proj-link:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
-    .proj-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem; font-weight: 700; color: var(--text); line-height: 1.3;
-    }
-    .proj-card p { font-size: 0.86rem; color: var(--muted); line-height: 1.68; flex: 1; }
-    .proj-highlights { display: flex; flex-direction: column; gap: 5px; }
-    .proj-hl { display: flex; align-items: flex-start; gap: 7px; font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
-    .proj-hl::before { content: '▸'; color: var(--accent); font-size: 0.62rem; flex-shrink: 0; margin-top: 3px; }
-    .proj-stack { display: flex; flex-wrap: wrap; gap: 6px; }
-
-    /* ── CERTIFICATIONS ── */
-    .certs-bg { background: var(--bg2); }
-    .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
-    .cert-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 12px; padding: 22px;
-      display: flex; gap: 16px; align-items: flex-start;
-      transition: all 0.2s;
-    }
-    .cert-card:hover { border-color: rgba(59,130,246,0.3); transform: translateY(-3px); }
-    .cert-icon {
-      width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.3rem; background: var(--surface2);
-      border: 1px solid var(--border);
-    }
-    .cert-info h4 { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 4px; line-height: 1.3; }
-    .cert-info p { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
-    .cert-info .cert-id { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--accent); margin-top: 6px; }
-
-    /* ── EDUCATION ── */
-    .edu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; }
-    .edu-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 12px; padding: 24px;
-      transition: all 0.2s;
-    }
-    .edu-card:hover { border-color: rgba(59,130,246,0.3); transform: translateY(-3px); }
-    .edu-year { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--accent); letter-spacing: 0.06em; margin-bottom: 8px; }
-    .edu-card h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
-    .edu-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
-    .edu-degree { font-size: 0.8rem; color: var(--text); font-weight: 500; margin-top: 6px; }
-
-    /* ── CONTACT ── */
-    .contact-inner { max-width: 620px; margin: 0 auto; text-align: center; }
-    .contact-inner h2 { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 900; margin-bottom: 14px; }
-    .contact-inner .sub { color: var(--muted); font-size: 1rem; line-height: 1.7; margin-bottom: 12px; }
-    .open-to {
-      display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 32px;
-    }
-    .open-chip {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 100px; padding: 5px 14px;
-      font-size: 0.78rem; color: var(--muted);
-    }
-    .contact-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .email-line { margin-top: 20px; font-family: 'DM Mono', monospace; font-size: 0.8rem; color: var(--muted); }
-    .email-line a { color: var(--accent2); text-decoration: none; }
-    .email-line a:hover { text-decoration: underline; }
-
-    footer {
-      position: relative; z-index: 1;
-      text-align: center; padding: 24px;
-      font-size: 0.76rem; color: var(--muted);
-      border-top: 1px solid var(--border);
-    }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp  { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
-    @keyframes fadeIn  { from { opacity: 0; } to { opacity: 1; } }
-    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .reveal.on { opacity: 1; transform: none; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 920px) {
-      nav { padding: 14px 22px; }
-      .nav-links { display: none; }
-      .hero { flex-direction: column-reverse; padding: 100px 22px 60px; gap: 40px; align-items: center; text-align: center; }
-      .hero-tags { justify-content: center; }
-      .hero-stats { justify-content: center; }
-      .hero-btns { justify-content: center; }
-      section { padding: 64px 22px; }
-      .about-wrap { grid-template-columns: 1fr; }
-      .exp-item { grid-template-columns: 1fr; gap: 12px; }
-      .projects-grid { grid-template-columns: 1fr; }
-      .certs-grid { grid-template-columns: 1fr; }
-      .edu-grid { grid-template-columns: 1fr; }
+    @media(max-width:920px){
+      nav{padding:14px 20px;}
+      .nav-links,.nav-resume{display:none;}
+      .hero{flex-direction:column-reverse;padding:100px 20px 60px;gap:36px;align-items:center;text-align:center;}
+      .hero-tags,.hero-stats,.hero-btns{justify-content:center;}
+      section{padding:60px 20px;}
+      .about-wrap{grid-template-columns:1fr;}
+      .exp-item{grid-template-columns:1fr;gap:10px;}
+      .projects-grid,.certs-grid,.edu-grid,.testimonial-wrap{grid-template-columns:1fr;}
+      .proj-card-featured{grid-column:span 1;}
+      .proj-featured-cols{grid-template-columns:1fr;}
     }
   </style>
 </head>
 <body>
-
 <div class="ambient"></div>
 <div class="grid-bg"></div>
 
-<!-- ── NAV ── -->
+<!-- NAV -->
 <nav>
   <div class="nav-logo">Simaran<em>.</em>Shaikh</div>
   <ul class="nav-links">
@@ -441,59 +230,52 @@
     <li><a href="#certifications">Certs</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="https://www.linkedin.com/in/simaranshaikh" target="_blank" class="nav-cta">
-    <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-    LinkedIn
-  </a>
+  <div class="nav-right">
+    <a href="https://simaran-shaikh-04.github.io/resume.pdf" target="_blank" class="nav-resume">
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+      Resume
+    </a>
+    <a href="https://www.linkedin.com/in/simaranshaikh" target="_blank" class="nav-cta">
+      <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      LinkedIn
+    </a>
+  </div>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-text">
     <div class="eyebrow"><span class="pulse"></span> Open to Analyst Roles</div>
     <h1 class="name">Simaran<br /><span class="blue">Shaikh</span></h1>
-    <p class="title-line">Financial Data Analyst · Power BI & DAX · Equity Research</p>
+    <p class="title-line">Financial Data Analyst · Power BI & DAX · AI-Powered Equity Research</p>
     <p class="hero-bio">
-      BCom Financial Accounting student at <strong>Don Bosco College, Panjim (2027)</strong> with hands-on experience across <strong>3 internships</strong> in equity research, financial analysis, and business intelligence. Turning raw financial data into decisions that matter.
+      BCom Financial Accounting student at <strong>Don Bosco College, Panjim (2027)</strong> with hands-on experience across <strong>4 internships</strong> spanning equity research, Power BI, financial analysis, and AI-powered tooling. Built a live AI equity research app on Hugging Face. Turning raw financial data into decisions that matter.
     </p>
     <div class="hero-tags">
-      <span class="tag">Power BI</span>
-      <span class="tag">DAX</span>
-      <span class="tag">Power Query</span>
-      <span class="tag">Equity Research</span>
-      <span class="tag">Advanced Excel</span>
-      <span class="tag">Financial Ratios</span>
-      <span class="tag">Python</span>
-      <span class="tag">SQL (learning)</span>
+      <span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Power Query</span>
+      <span class="tag">Equity Research</span><span class="tag">Advanced Excel</span>
+      <span class="tag">Financial Ratios</span><span class="tag">Google Gemini AI</span><span class="tag">Streamlit</span>
     </div>
     <div class="hero-stats">
-      <div class="hstat">
-        <div class="num">100+</div>
-        <div class="lbl">Companies Analyzed</div>
-      </div>
-      <div class="hstat">
-        <div class="num">250K+</div>
-        <div class="lbl">UPI Records (Power BI)</div>
-      </div>
-      <div class="hstat">
-        <div class="num">65+</div>
-        <div class="lbl">Financial Ratios</div>
-      </div>
-      <div class="hstat">
-        <div class="num">₹50L</div>
-        <div class="lbl">Equity Portfolio Built</div>
-      </div>
+      <div class="hstat"><div class="num">100+</div><div class="lbl">Companies Analyzed</div></div>
+      <div class="hstat"><div class="num">&#8377;2.39Cr</div><div class="lbl">MF Corpus Reviewed</div></div>
+      <div class="hstat"><div class="num">250K+</div><div class="lbl">UPI Records (Power BI)</div></div>
+      <div class="hstat"><div class="num">4</div><div class="lbl">Live Projects</div></div>
     </div>
     <div class="hero-btns">
       <a href="https://www.linkedin.com/in/simaranshaikh" target="_blank" class="btn btn-linkedin">
-        <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        Connect on LinkedIn
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://simaran-shaikh-04.github.io/resume.pdf" target="_blank" class="btn btn-gold">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        Download CV
       </a>
       <a href="https://github.com/Simaran-Shaikh-04" target="_blank" class="btn btn-ghost">
-        <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
         GitHub
       </a>
-      <a href="mailto:simaranshaikh04@gmail.com" class="btn btn-ghost">✉ Email Me</a>
+      <a href="mailto:simaranshaikh04@gmail.com" class="btn btn-ghost">&#9993; Email</a>
     </div>
   </div>
 
@@ -501,173 +283,149 @@
     <div class="photo-wrap">
       <div class="photo-ring"></div>
       <div class="photo-inner" id="photoBox">
-        <img src="https://simaran-shaikh-04.github.io/profile.jpeg" alt="Simaran Shaikh" onerror="this.parentElement.innerHTML='<svg class=\'photo-placeholder-icon\' width=\'72\' height=\'72\' fill=\'none\' viewBox=\'0 0 72 72\'><circle cx=\'36\' cy=\'27\' r=\'16\' stroke=\'#60a5fa\' stroke-width=\'1.8\'/><path d=\'M9 63c0-14.912 12.088-27 27-27s27 12.088 27 27\' stroke=\'#60a5fa\' stroke-width=\'1.8\' stroke-linecap=\'round\'/></svg><p class=\'photo-placeholder-text\'>ADD PHOTO</p>'" />
+        <svg class="photo-placeholder-icon" width="68" height="68" fill="none" viewBox="0 0 72 72">
+          <circle cx="36" cy="27" r="16" stroke="#60a5fa" stroke-width="1.8"/>
+          <path d="M9 63c0-14.912 12.088-27 27-27s27 12.088 27 27" stroke="#60a5fa" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <p class="photo-placeholder-text">CLICK &#8599; TO ADD PHOTO</p>
       </div>
       <label class="upload-btn" title="Upload photo">
-        <input type="file" accept="image/*" onchange="handlePhoto(event)" />
-        <svg width="16" height="16" fill="none" stroke="white" stroke-width="2.2" viewBox="0 0 24 24">
-          <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
-        </svg>
+        <input type="file" accept="image/*" id="photoInput" />
+        <svg width="15" height="15" fill="none" stroke="white" stroke-width="2.2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
       </label>
     </div>
-    <div class="location-badge" style="margin-top:32px;">
-      📍 <span>Ponda, Goa, India</span>
-    </div>
+    <div class="location-badge">&#128205; <span>Ponda, Goa, India</span></div>
   </div>
 </section>
 
-<!-- ── ABOUT ── -->
+<!-- ABOUT -->
 <section id="about">
   <div class="section-header reveal">
-    <span class="sec-num">01</span>
-    <h2>About Me</h2>
-    <div class="sec-line"></div>
+    <span class="sec-num">01</span><h2>About Me</h2><div class="sec-line"></div>
   </div>
   <div class="about-wrap">
     <div class="about-text reveal">
-      <p>
-        I'm <strong>Simaran Shaikh</strong> — a BCom Financial Accounting student at <strong>Don Bosco College, Panjim (Class of 2027)</strong> building a career at the intersection of finance and data analytics.
-      </p>
-      <p>
-        I've completed <strong>3 internships</strong> across equity research, Power BI business intelligence, and financial parameter analysis — gaining real-world exposure before graduating. I've analyzed financial data for <strong>100+ companies across FY2020–FY2024</strong>, computed <strong>65+ financial ratios</strong>, and built Power BI dashboards on <strong>2,50,000 UPI transaction records</strong> with 9 custom DAX measures.
-      </p>
-      <p>
-        At Precision Investments, I served as <strong>Student Coordinator</strong> for an Equity Research program and designed a recovery-focused portfolio for a real client with ₹5L investment intent, reconstructed an MF portfolio targeting ₹1.2L annual income, and built a <strong>₹50L equity portfolio from scratch</strong>.
-      </p>
-      <p>
-        I'm also a selected <strong>McKinsey Forward Learner</strong> — a 10-week global program by McKinsey.org building structured problem-solving, critical thinking, and business frameworks.
-      </p>
+      <p>I'm <strong>Simaran Shaikh</strong> — a BCom Financial Accounting student at <strong>Don Bosco College, Panjim (Class of 2027)</strong>, building a career at the intersection of finance and data analytics.</p>
+      <p>Across 4 internships I've analyzed <strong>100+ companies</strong>, computed <strong>65+ financial ratios</strong>, built Power BI dashboards on <strong>2,50,000 UPI records</strong>, and reviewed a <strong>real &#8377;2.39 Crore family MF portfolio</strong>. In June 2026 I built and deployed an <strong>AI equity research tool</strong> on Hugging Face — solo, from Colab prototype to live app.</p>
+      <p>Selected as a <strong>McKinsey Forward Learner</strong> — a 10-week global program focused on structured problem-solving, critical thinking, and business frameworks.</p>
       <div class="seeking-box">
-        <p>🎯 Actively seeking analyst roles in <strong>Financial Analytics, FP&A, MIS, or Equity Research</strong> — open to remote and <strong>Mumbai / Pune / Bengaluru</strong> opportunities.</p>
+        <p>&#127919; Actively seeking roles in <strong>Financial Analytics, FP&amp;A, MIS, or Equity Research</strong> — open to remote and <strong>Mumbai &middot; Pune &middot; Bengaluru</strong>.</p>
       </div>
     </div>
-
     <div class="skills-panel reveal">
       <div class="skill-group">
-        <div class="skill-group-title">BI & Analytics</div>
+        <div class="skill-group-title">BI &amp; Analytics</div>
         <div class="skill-chips">
-          <span class="chip chip-blue">Microsoft Power BI</span>
-          <span class="chip chip-blue">DAX</span>
-          <span class="chip chip-blue">Power Query</span>
-          <span class="chip chip-blue">Data Modeling</span>
-          <span class="chip chip-blue">Data Visualization</span>
+          <span class="chip chip-blue">Power BI</span><span class="chip chip-blue">DAX</span><span class="chip chip-blue">Power Query</span><span class="chip chip-blue">Data Modeling</span>
         </div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">Finance & Research</div>
+        <div class="skill-group-title">Finance &amp; Research</div>
         <div class="skill-chips">
-          <span class="chip chip-gold">Equity Research</span>
-          <span class="chip chip-gold">Financial Ratios (65+)</span>
-          <span class="chip chip-gold">Portfolio Construction</span>
-          <span class="chip chip-gold">Mutual Funds</span>
-          <span class="chip chip-gold">FP&A</span>
+          <span class="chip chip-gold">Equity Research</span><span class="chip chip-gold">Financial Ratios</span><span class="chip chip-gold">Portfolio Analysis</span><span class="chip chip-gold">Mutual Funds</span><span class="chip chip-gold">FP&amp;A</span>
         </div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">Tools & Tech</div>
+        <div class="skill-group-title">AI &amp; Tools</div>
         <div class="skill-chips">
-          <span class="chip chip-green">Advanced Excel</span>
-          <span class="chip chip-green">Google Sheets</span>
-          <span class="chip chip-green">Python</span>
-          <span class="chip chip-muted">SQL (learning)</span>
-          <span class="chip chip-muted">Microsoft Azure</span>
-          <span class="chip chip-muted">Microsoft Copilot</span>
+          <span class="chip chip-purple">Google Gemini AI</span><span class="chip chip-purple">Streamlit</span><span class="chip chip-green">Advanced Excel</span><span class="chip chip-muted">Screener.in</span><span class="chip chip-muted">Value Research Online</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── EXPERIENCE ── -->
+<!-- EXPERIENCE -->
 <section id="experience" class="exp-bg">
   <div class="section-header reveal">
-    <span class="sec-num">02</span>
-    <h2>Experience</h2>
-    <div class="sec-line"></div>
+    <span class="sec-num">02</span><h2>Experience</h2><div class="sec-line"></div>
   </div>
-
   <div class="timeline">
 
-    <!-- UptoSkills -->
     <div class="exp-item reveal">
       <div class="exp-meta">
-        <div class="exp-period">Feb 2026 – Present</div>
-        <div class="exp-org">UptoSkills</div>
-        <div class="exp-loc">India (AICTE Portal)</div>
-        <span class="exp-badge badge-active">Active</span>
+        <div class="exp-period">Jun 2026</div>
+        <div class="exp-org">Self-Directed</div>
+        <div class="exp-loc">Hugging Face &middot; Remote</div>
+        <div class="exp-badges"><span class="exp-badge badge-done">Completed</span></div>
       </div>
       <div class="exp-body">
-        <h3>Finance Intern & Team Captain</h3>
-        <p class="exp-role-sub">Financial Parameter Analysis · AICTE National Internship Initiative</p>
+        <h3>AI Equity Research Tool — Solo Build</h3>
+        <p class="exp-role-sub">Google Gemini 2.5 Flash &middot; Streamlit &middot; Hugging Face</p>
         <ul class="exp-points">
-          <li><span>Led a cross-functional team ensuring timely delivery of data collection, analysis, and reporting tasks.</span></li>
-          <li><span>Executed the <strong>Financial Parameter Analysis</strong> project — collected and structured KPI data for <strong>100+ companies (FY2022–FY2024)</strong>.</span></li>
-          <li><span>Computed <strong>65+ financial ratios</strong> for 5+ companies across FY2020–FY2024 — P/E, EPS, ROE, ROCE, debt ratios, and more.</span></li>
-          <li><span>Conducted year-on-year analysis of revenue, profit/loss, and key ratios to identify growth trends and profitability shifts.</span></li>
-          <li><span>Collaborated cross-functionally to maintain data integrity and meet weekly/daily reporting targets.</span></li>
+          <li><span>Built a <strong>2,850-line Streamlit app</strong> from scratch — deployed live on Hugging Face Spaces. Integrates Google Gemini 2.5 Flash to extract 20–25 financial fields per year from annual report PDFs.</span></li>
+          <li><span>Engineered a <strong>12-sector scoring engine</strong> (FMCG, IT, Banking, NBFC, Pharma, Auto + more) — each sector has custom KPI benchmarks and interpolated 0–100 scoring.</span></li>
+          <li><span>Outputs a <strong>brokerage-style Word report</strong> with 9 sections, qualitative penalty flags (going-concern, audit, related-party), and grade-to-signal mapping: A+ = Strong Buy &#8594; D = Avoid.</span></li>
         </ul>
         <div class="exp-tools">
-          <span class="chip chip-gold">Advanced Excel</span>
-          <span class="chip chip-muted">Google Sheets</span>
-          <span class="chip chip-muted">AI Analytics Tools</span>
+          <span class="chip chip-purple">Google Gemini AI</span><span class="chip chip-purple">Streamlit</span><span class="chip chip-muted">PyMuPDF</span><span class="chip chip-muted">python-docx</span><span class="chip chip-muted">Hugging Face</span>
         </div>
       </div>
     </div>
 
-    <!-- Precision Investments -->
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">Jan – May 2026</div>
+        <div class="exp-org">UptoSkills</div>
+        <div class="exp-loc">India &middot; AICTE Portal</div>
+        <div class="exp-badges">
+          <span class="exp-badge badge-done">Completed</span>
+          <span class="exp-badge badge-captain">&#127885; Captain</span>
+        </div>
+      </div>
+      <div class="exp-body">
+        <h3>Finance Intern — Domain Captain</h3>
+        <p class="exp-role-sub">Financial Parameter Analysis &middot; AICTE National Internship Initiative</p>
+        <ul class="exp-points">
+          <li><span><strong>Led a team of 8–9 interns</strong> — assigned tasks, tracked daily progress, onboarded new joiners mid-cycle, and reported structured status updates to the project handler.</span></li>
+          <li><span>Ran <strong>group discussions and quizzes</strong> on finance topics with fellow captains to deepen team knowledge and maintain cohort engagement.</span></li>
+          <li><span>Executed <strong>Financial Parameter Analysis</strong> for 100+ companies (FY2022–FY2024) — computed 65+ ratios (P/E, EPS, ROE, ROCE, debt ratios) across FY2020–FY2024.</span></li>
+        </ul>
+        <div class="exp-tools">
+          <span class="chip chip-gold">Team Leadership</span><span class="chip chip-gold">Advanced Excel</span><span class="chip chip-muted">Google Sheets</span>
+        </div>
+        <div class="cert-ref">&#127942; Cert ID: US-INT-2026-FESS25B &middot; Exp Ref: US-EXP-2026-K4BHWOP &middot; Issued 04/06/2026</div>
+      </div>
+    </div>
+
     <div class="exp-item reveal">
       <div class="exp-meta">
         <div class="exp-period">Jan – Mar 2026</div>
         <div class="exp-org">Precision Investments</div>
         <div class="exp-loc">Don Bosco College, Panjim</div>
-        <span class="exp-badge badge-done">Completed</span>
+        <div class="exp-badges"><span class="exp-badge badge-done">Completed</span></div>
       </div>
       <div class="exp-body">
-        <h3>Equity Research Intern</h3>
-        <p class="exp-role-sub">30-Hr Certificate Course · Student Coordinator · Mentor: Johann Da Silva</p>
+        <h3>Equity Research Intern &amp; Student Coordinator</h3>
+        <p class="exp-role-sub">30-Hr Certificate Course &middot; Mentor: Johann Da Silva, Milestone Financial Services</p>
         <ul class="exp-points">
-          <li><span>Served as <strong>Student Coordinator</strong> — supported session flow and bridged communication between participants and faculty.</span></li>
-          <li><span>Designed a <strong>recovery-focused equity portfolio</strong> for a real client invested ₹3L of ₹5L goal, currently -14% — recommended reallocation to recover position.</span></li>
-          <li><span>Reconstructed a <strong>mutual fund portfolio</strong> targeting ₹1.2L annual income from existing corpus.</span></li>
-          <li><span>Built a <strong>₹50L equity portfolio from scratch</strong> — stock selection, sector allocation, and full investment rationale documented.</span></li>
-          <li><span>Conducted fundamental analysis on <strong>Dynamatic Technologies</strong> — financial ratios, valuation, and buy/hold/sell recommendation.</span></li>
-          <li><span>Built a personal financial plan end-to-end as part of the capstone deliverable.</span></li>
+          <li><span>Analyzed a <strong>real &#8377;5L client portfolio</strong> (&#8377;3L deployed, -5.67%) using 15 ratios per stock — recommended &#8377;2L deployment across Sagility, Colgate, and a &#8377;40K cash reserve. <strong>3/4 calls validated within 3 months.</strong></span></li>
+          <li><span>Reviewed a <strong>real &#8377;2.39Cr family MF portfolio</strong> (28 schemes, 3 members) — identified a 14% SWP shortfall, fund overlaps, and age-misaligned allocations.</span></li>
+          <li><span>Built a <strong>&#8377;50L equity portfolio from scratch</strong> and conducted full fundamental analysis on Dynamatic Technologies (ratios, valuation, buy/hold/sell recommendation).</span></li>
+          <li><span>Served as <strong>Student Coordinator</strong> — managed logistics and communication for a 40-seat Saturday cohort.</span></li>
         </ul>
         <div class="exp-tools">
-          <span class="chip chip-gold">Equity Research</span>
-          <span class="chip chip-gold">Portfolio Construction</span>
-          <span class="chip chip-gold">Mutual Funds</span>
-          <span class="chip chip-green">Advanced Excel</span>
+          <span class="chip chip-gold">Equity Research</span><span class="chip chip-gold">Portfolio Analysis</span><span class="chip chip-gold">Mutual Funds</span><span class="chip chip-muted">Screener.in</span><span class="chip chip-muted">Value Research Online</span>
         </div>
       </div>
     </div>
 
-    <!-- FICE / Microsoft Elevate -->
     <div class="exp-item reveal">
       <div class="exp-meta">
         <div class="exp-period">Feb – Mar 2026</div>
         <div class="exp-org">FICE Education</div>
-        <div class="exp-loc">Microsoft Elevate × AICTE</div>
-        <span class="exp-badge badge-done">Completed</span>
+        <div class="exp-loc">Microsoft Elevate &times; AICTE</div>
+        <div class="exp-badges"><span class="exp-badge badge-done">Completed</span></div>
       </div>
       <div class="exp-body">
-        <h3>Power BI Intern — Microsoft Elevate Program</h3>
-        <p class="exp-role-sub">4-Week Internship · Emerging Technologies Track · 6 Certificates Earned (140+ hrs)</p>
+        <h3>Power BI Intern — Microsoft Elevate</h3>
+        <p class="exp-role-sub">4-Week Program &middot; Emerging Technologies Track &middot; Microsoft &amp; AICTE Co-Certified</p>
         <ul class="exp-points">
-          <li><span>Built a <strong>3-page interactive Power BI dashboard</strong> analyzing <strong>2,50,000 UPI transaction records</strong> with 9 custom DAX measures from scratch.</span></li>
-          <li><span>Page 1 — Executive Summary: 5 KPI cards, 2 monthly trend lines, peak month callouts, MoM growth tracking.</span></li>
-          <li><span>Page 2 — Transaction Analysis: age group slicers, Top 10 States bar chart, device & network breakdowns.</span></li>
-          <li><span>Page 3 — Fraud Intelligence: <strong>480 fraud-flagged transactions</strong> mapped by merchant category, state, and transaction type.</span></li>
-          <li><span>Key findings: 87.4% success rate · 26–35 age group = highest UPI spenders (₹116M) · P2P = highest fraud · Peak: May, Highest value: July.</span></li>
-          <li><span>Earned co-branded <strong>Microsoft & AICTE</strong> certificate + 5 additional certs across Power BI, Azure, AI/ML, Cloud Admin, Copilot (140+ hrs).</span></li>
+          <li><span>Built a <strong>3-page Power BI dashboard</strong> on 2,50,000 UPI records with 9 custom DAX measures — zero pre-built KPIs. Key findings: 87.4% success rate, 480 fraud-flagged transactions, &#8377;116M top-age-group spend.</span></li>
+          <li><span>Earned a co-branded <strong>Microsoft &amp; AICTE certificate</strong> + 5 additional certs across Azure, AI/ML, Cloud Admin, and Copilot (140+ hrs total).</span></li>
         </ul>
         <div class="exp-tools">
-          <span class="chip chip-blue">Power BI</span>
-          <span class="chip chip-blue">DAX</span>
-          <span class="chip chip-blue">Power Query</span>
-          <span class="chip chip-muted">Microsoft Azure</span>
-          <span class="chip chip-muted">AI & ML</span>
-          <span class="chip chip-muted">Microsoft Copilot</span>
+          <span class="chip chip-blue">Power BI</span><span class="chip chip-blue">DAX</span><span class="chip chip-blue">Power Query</span><span class="chip chip-muted">Data Modeling</span>
         </div>
       </div>
     </div>
@@ -675,301 +433,298 @@
   </div>
 </section>
 
-<!-- ── PROJECTS ── -->
+<!-- PROJECTS -->
 <section id="projects">
   <div class="section-header reveal">
-    <span class="sec-num">03</span>
-    <h2>Projects</h2>
-    <div class="sec-line"></div>
+    <span class="sec-num">03</span><h2>Projects</h2><div class="sec-line"></div>
   </div>
-
   <div class="projects-grid">
+
+    <div class="proj-card-featured reveal">
+      <div class="proj-top-bar"></div>
+      <div style="margin-bottom:4px;"><span class="featured-badge">&#11088; Featured &middot; Live App</span></div>
+      <div class="proj-featured-cols">
+        <div>
+          <div class="proj-header" style="margin-bottom:10px;">
+            <div class="proj-icon">&#129302;</div>
+            <div class="proj-links">
+              <a href="https://huggingface.co/spaces/LumoraX/AI_Equity_Research" target="_blank" class="proj-link" title="Live Demo">
+                <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3>AI Equity Research Assistant</h3>
+          <p style="margin-top:8px;">Solo-built Streamlit app powered by Google Gemini 2.5 Flash. Upload an annual report PDF, select a sector, get a scored and graded brokerage-style research report — automatically. Built from Colab prototype to a deployed Hugging Face Space.</p>
+        </div>
+        <div>
+          <div class="proj-highlights" style="margin-bottom:12px;">
+            <div class="proj-hl">2,850 lines &middot; 12 sectors &middot; custom scoring benchmarks per sector</div>
+            <div class="proj-hl">AI extracts 20–25 financial fields per year from PDF</div>
+            <div class="proj-hl">0–100 interpolated score + penalty flags (audit, going-concern)</div>
+            <div class="proj-hl">9-section .docx report &middot; A+ = Strong Buy &#8594; D = Avoid</div>
+          </div>
+          <div class="proj-stack">
+            <span class="chip chip-purple">Gemini 2.5 Flash</span><span class="chip chip-purple">Streamlit</span><span class="chip chip-muted">PyMuPDF</span><span class="chip chip-muted">python-docx</span><span class="chip chip-muted">Hugging Face</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="proj-card reveal">
       <div class="proj-top-bar"></div>
       <div class="proj-header">
-        <div class="proj-icon">💳</div>
+        <div class="proj-icon">&#128179;</div>
         <div class="proj-links">
-          <a href="https://github.com/Simaran-Shaikh-04/upi-transaction-dashboard" target="_blank" class="proj-link" title="GitHub">
-            <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-          </a>
+          <a href="https://github.com/Simaran-Shaikh-04/upi-transaction-dashboard" target="_blank" class="proj-link" title="GitHub"><svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
         </div>
       </div>
       <h3>UPI Transaction Dashboard</h3>
-      <p>Capstone project for the Microsoft Elevate × AICTE Power BI internship. A 3-page interactive dashboard analyzing India's digital payments ecosystem — 17 columns, zero pre-built KPIs, built from scratch.</p>
+      <p>3-page Power BI dashboard on 2,50,000 UPI records — Microsoft Elevate capstone. Zero pre-built KPIs, built entirely from raw data.</p>
       <div class="proj-highlights">
-        <div class="proj-hl">2,50,000 UPI transaction records · 9 custom DAX measures</div>
-        <div class="proj-hl">87.4% success rate · ₹116M in top age group spend</div>
-        <div class="proj-hl">Fraud intelligence: 480 flagged transactions mapped by state & merchant</div>
-        <div class="proj-hl">MoM growth tracking · peak month & highest value month callouts</div>
+        <div class="proj-hl">9 custom DAX measures &middot; 17 columns &middot; 87.4% success rate</div>
+        <div class="proj-hl">480 fraud-flagged transactions mapped by state &amp; merchant</div>
+        <div class="proj-hl">Age-group slicers &middot; MoM growth &middot; peak &amp; highest value months</div>
       </div>
       <div class="proj-stack">
-        <span class="chip chip-blue">Power BI</span>
-        <span class="chip chip-blue">DAX</span>
-        <span class="chip chip-blue">Power Query</span>
-        <span class="chip chip-gold">Data Modeling</span>
+        <span class="chip chip-blue">Power BI</span><span class="chip chip-blue">DAX</span><span class="chip chip-blue">Power Query</span>
       </div>
     </div>
 
     <div class="proj-card reveal">
       <div class="proj-top-bar"></div>
       <div class="proj-header">
-        <div class="proj-icon">📈</div>
+        <div class="proj-icon">&#128200;</div>
         <div class="proj-links">
-          <a href="https://github.com/Simaran-Shaikh-04/Trading-Portfolio-Analysis" target="_blank" class="proj-link" title="GitHub">
-            <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-          </a>
+          <a href="https://github.com/Simaran-Shaikh-04/Trading-Portfolio-Analysis" target="_blank" class="proj-link" title="GitHub"><svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
         </div>
       </div>
       <h3>Trading Portfolio Analysis</h3>
-      <p>Real-client equity research project from the Precision Investments internship. Designed a recovery strategy for a client already deployed at a loss, with full rationale for reallocation across 4 stocks.</p>
+      <p>Real client with &#8377;5L goal, &#8377;3L deployed at -5.67%. Applied 15 ratios per stock to build a &#8377;2L recovery deployment strategy.</p>
       <div class="proj-highlights">
-        <div class="proj-hl">Real client: ₹3L deployed of ₹5L goal, currently -14%</div>
-        <div class="proj-hl">Recovery-focused reallocation strategy across 4 stocks</div>
-        <div class="proj-hl">P/E, EPS, ROE, ROCE — full fundamental analysis</div>
-        <div class="proj-hl">Buy/hold/sell recommendation with documented rationale</div>
+        <div class="proj-hl">Sagility (undervalued) + Colgate (defensive) + &#8377;40K reserve</div>
+        <div class="proj-hl">3 out of 4 calls validated within 3 months</div>
       </div>
       <div class="proj-stack">
-        <span class="chip chip-gold">Equity Research</span>
-        <span class="chip chip-gold">Fundamental Analysis</span>
-        <span class="chip chip-green">Advanced Excel</span>
-        <span class="chip chip-green">Python</span>
+        <span class="chip chip-gold">Equity Research</span><span class="chip chip-gold">Fundamental Analysis</span><span class="chip chip-muted">Screener.in</span>
       </div>
     </div>
 
     <div class="proj-card reveal">
       <div class="proj-top-bar"></div>
       <div class="proj-header">
-        <div class="proj-icon">🏦</div>
+        <div class="proj-icon">&#127974;</div>
         <div class="proj-links">
-          <a href="https://github.com/Simaran-Shaikh-04/Family-MF-Portfolio-Analysis" target="_blank" class="proj-link" title="GitHub">
-            <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-          </a>
+          <a href="https://github.com/Simaran-Shaikh-04/Family-MF-Portfolio-Analysis" target="_blank" class="proj-link" title="GitHub"><svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
         </div>
       </div>
       <h3>Family MF Portfolio Analysis</h3>
-      <p>Reconstructed a mutual fund portfolio for a family client targeting ₹1.2L annual income from existing corpus. Full category review, return benchmarking, and income-generation rebalancing.</p>
+      <p>&#8377;2.39 Crore real portfolio across 28 schemes for 3 members. Retirement income planning, overlap detection, and rebalancing recommendations.</p>
       <div class="proj-highlights">
-        <div class="proj-hl">Target: ₹1.2L annual income from existing MF corpus</div>
-        <div class="proj-hl">Fund category allocation review & benchmark comparison</div>
-        <div class="proj-hl">Actionable rebalancing recommendations with rationale</div>
+        <div class="proj-hl">14% SWP shortfall identified (&#8377;2.06Cr vs &#8377;2.40Cr needed)</div>
+        <div class="proj-hl">Flagged 37% small-cap exposure for retirement-stage investor</div>
       </div>
       <div class="proj-stack">
-        <span class="chip chip-gold">Mutual Funds</span>
-        <span class="chip chip-gold">Portfolio Mgmt</span>
-        <span class="chip chip-green">Python</span>
-        <span class="chip chip-green">pandas</span>
-      </div>
-    </div>
-
-    <div class="proj-card reveal">
-      <div class="proj-top-bar"></div>
-      <div class="proj-header">
-        <div class="proj-icon">🌐</div>
-        <div class="proj-links">
-          <a href="https://github.com/Simaran-Shaikh-04/Simaran-Shaikh-04.github.io" target="_blank" class="proj-link" title="GitHub">
-            <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-          </a>
-          <a href="https://simaran-shaikh-04.github.io" target="_blank" class="proj-link" title="Live site">
-            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
-          </a>
-        </div>
-      </div>
-      <h3>Personal Portfolio Website</h3>
-      <p>This site — hosted on GitHub Pages, built from scratch. A central hub linking all projects, experience, and certifications in one clean place for recruiters and collaborators.</p>
-      <div class="proj-highlights">
-        <div class="proj-hl">Live at simaran-shaikh-04.github.io</div>
-        <div class="proj-hl">All projects linked directly to GitHub repos</div>
-        <div class="proj-hl">Fully responsive · dark theme · animated</div>
-      </div>
-      <div class="proj-stack">
-        <span class="chip chip-blue">HTML / CSS</span>
-        <span class="chip chip-blue">JavaScript</span>
-        <span class="chip chip-muted">GitHub Pages</span>
+        <span class="chip chip-gold">Mutual Fund Analysis</span><span class="chip chip-gold">Financial Planning</span><span class="chip chip-muted">Value Research Online</span>
       </div>
     </div>
 
   </div>
-
-  <div style="text-align:center; margin-top:36px;" class="reveal">
+  <div style="text-align:center;margin-top:28px;" class="reveal">
     <a href="https://github.com/Simaran-Shaikh-04" target="_blank" class="btn btn-ghost">
-      <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
       View All on GitHub
     </a>
   </div>
 </section>
 
-<!-- ── CERTIFICATIONS ── -->
+<!-- CERTIFICATIONS -->
 <section id="certifications" class="certs-bg">
   <div class="section-header reveal">
-    <span class="sec-num">04</span>
-    <h2>Certifications</h2>
-    <div class="sec-line"></div>
+    <span class="sec-num">04</span><h2>Certifications</h2><div class="sec-line"></div>
   </div>
   <div class="certs-grid">
 
     <div class="cert-card reveal">
-      <div class="cert-icon">🏆</div>
+      <div class="cert-icon">&#127885;</div>
       <div class="cert-info">
-        <h4>Certificate of Internship Completion</h4>
-        <p>Power BI for Business Applications — Microsoft Elevate × AICTE (4-week program, Feb–Mar 2026)</p>
-        <div class="cert-id">Co-branded: Microsoft & AICTE</div>
+        <h4>Finance Internship — Domain Captain</h4>
+        <p>UptoSkills &middot; Captain of Finance domain &middot; Jan–May 2026. Led team of 8–9 interns.</p>
+        <div class="cert-id">ID: US-INT-2026-FESS25B &middot; Exp Ref: US-EXP-2026-K4BHWOP</div>
+        <div class="cert-links">
+          <a href="https://simaran-shaikh-04.github.io/certs/uptoskills-internship.pdf" target="_blank" class="cert-btn cert-btn-view">&#128065; View</a>
+          <a href="https://simaran-shaikh-04.github.io/certs/uptoskills-internship.pdf" download class="cert-btn cert-btn-dl">&#8595; Download</a>
+        </div>
       </div>
     </div>
 
     <div class="cert-card reveal">
-      <div class="cert-icon">☁️</div>
+      <div class="cert-icon">&#127942;</div>
       <div class="cert-info">
-        <h4>Microsoft Azure Fundamentals</h4>
-        <p>25 hrs · Cloud Administration & Engineering (40 hrs) · Part of Microsoft Elevate 140+ hr program</p>
-        <div class="cert-id">Microsoft Elevate · 2026</div>
+        <h4>Power BI for Business Applications</h4>
+        <p>Microsoft Elevate &times; AICTE &middot; 4-week internship capstone &middot; Feb–Mar 2026.</p>
+        <div class="cert-id">Co-branded: Microsoft &amp; AICTE &middot; 2026</div>
+        <div class="cert-links">
+          <a href="https://simaran-shaikh-04.github.io/certs/microsoft-elevate.pdf" target="_blank" class="cert-btn cert-btn-view">&#128065; View</a>
+          <a href="https://simaran-shaikh-04.github.io/certs/microsoft-elevate.pdf" download class="cert-btn cert-btn-dl">&#8595; Download</a>
+        </div>
       </div>
     </div>
 
     <div class="cert-card reveal">
-      <div class="cert-icon">🤖</div>
+      <div class="cert-icon">&#128202;</div>
       <div class="cert-info">
-        <h4>AI & Machine Learning + Microsoft Copilot</h4>
-        <p>AI & ML (20 hrs) + Microsoft Copilot (35 hrs) — both earned through Microsoft Elevate × AICTE</p>
-        <div class="cert-id">Microsoft Elevate · 2026</div>
-      </div>
-    </div>
-
-    <div class="cert-card reveal">
-      <div class="cert-icon">📊</div>
-      <div class="cert-info">
-        <h4>Business Intelligence using Advanced Excel & Power BI</h4>
-        <p>30-hour Live Training Program by ExcelR EdTech (Jan 27 – Feb 16, 2026) via Don Bosco College MOU. 15 days, 2 hrs/evening.</p>
+        <h4>Business Intelligence — Advanced Excel &amp; Power BI</h4>
+        <p>ExcelR EdTech &middot; 30-hr live training via Don Bosco College MOU &middot; Jan–Feb 2026.</p>
         <div class="cert-id">ID: 130582/EXCELR/EDL/26022026</div>
+        <div class="cert-links">
+          <a href="https://simaran-shaikh-04.github.io/certs/excelr-bi.pdf" target="_blank" class="cert-btn cert-btn-view">&#128065; View</a>
+          <a href="https://simaran-shaikh-04.github.io/certs/excelr-bi.pdf" download class="cert-btn cert-btn-dl">&#8595; Download</a>
+        </div>
       </div>
     </div>
 
     <div class="cert-card reveal">
-      <div class="cert-icon">📉</div>
+      <div class="cert-icon">&#128201;</div>
       <div class="cert-info">
-        <h4>Equity Research & Portfolio Strategy</h4>
-        <p>30-hr certificate course at Don Bosco College, Panjim (Jan–Mar 2026). Dept of Commerce × IQAC · Mentor: Johann Da Silva, Milestone Financial Services.</p>
-        <div class="cert-id">Don Bosco College, Panjim · 2026</div>
+        <h4>Equity Research &amp; Portfolio Strategy</h4>
+        <p>Don Bosco College &middot; 30-hr course &middot; Dept of Commerce &times; IQAC &middot; Jan–Mar 2026. Mentor: Johann Da Silva.</p>
+        <div class="cert-id">Don Bosco College, Panjim &middot; 2026</div>
+        <div class="cert-links">
+          <a href="https://simaran-shaikh-04.github.io/certs/equity-research.pdf" target="_blank" class="cert-btn cert-btn-view">&#128065; View</a>
+          <a href="https://simaran-shaikh-04.github.io/certs/equity-research.pdf" download class="cert-btn cert-btn-dl">&#8595; Download</a>
+        </div>
       </div>
     </div>
 
     <div class="cert-card reveal">
-      <div class="cert-icon">🌐</div>
+      <div class="cert-icon">&#127760;</div>
       <div class="cert-info">
         <h4>McKinsey Forward Learner</h4>
-        <p>Selected for McKinsey.org's 10-week global learning program — structured problem-solving, critical thinking, effective communication, and real-world business frameworks.</p>
-        <div class="cert-id">McKinsey & Company · 2026</div>
+        <p>Selected for McKinsey.org's 10-week global program — structured problem-solving, critical thinking, and business frameworks.</p>
+        <div class="cert-id">McKinsey &amp; Company &middot; 2026</div>
       </div>
     </div>
 
     <div class="cert-card reveal">
-      <div class="cert-icon">💡</div>
+      <div class="cert-icon">&#128203;</div>
+      <div class="cert-info">
+        <h4>Advanced Excel with AI</h4>
+        <p>Internshala &middot; Advanced Excel + AI tools for business analytics and reporting.</p>
+        <div class="cert-id">Internshala &middot; 2025</div>
+      </div>
+    </div>
+
+    <div class="cert-card reveal">
+      <div class="cert-icon">&#128161;</div>
       <div class="cert-info">
         <h4>AI Literacy</h4>
-        <p>Certified in AI literacy fundamentals — understanding AI applications in business, data, and analytics contexts.</p>
-        <div class="cert-id">2025–2026</div>
-      </div>
-    </div>
-
-    <div class="cert-card reveal">
-      <div class="cert-icon">📋</div>
-      <div class="cert-info">
-        <h4>Advanced Excel with AI — Internshala</h4>
-        <p>Advanced Excel techniques combined with AI tools for business analytics and data-driven reporting.</p>
-        <div class="cert-id">Internshala · 2025</div>
+        <p>AI literacy fundamentals — AI applications in business, data, and analytics contexts.</p>
+        <div class="cert-id">IBM–Credly / NIELIT &middot; 2025–2026</div>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- ── EDUCATION ── -->
-<section id="education">
+<!-- TESTIMONIALS -->
+<section id="testimonials">
   <div class="section-header reveal">
-    <span class="sec-num">05</span>
-    <h2>Education</h2>
-    <div class="sec-line"></div>
+    <span class="sec-num">05</span><h2>Testimonials</h2><div class="sec-line"></div>
+  </div>
+  <div class="testimonial-wrap">
+    <div class="tcard reveal">
+      <p class="tcard-quote">Amazing work! Your capstone on India's UPI ecosystem is not just technically impressive — it's insightful and impactful. Turning 250K raw records into clear, actionable dashboards with custom DAX measures is next-level Power BI mastery.</p>
+      <div class="tcard-person">
+        <div class="tcard-avatar">VM</div>
+        <div>
+          <div class="tcard-name">Vignesh Muthuvelan</div>
+          <div class="tcard-role">Master Trainer &middot; AI/ML &middot; IBM Cloud &middot; FICE Education</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" style="background:var(--bg2);">
+  <div class="section-header reveal">
+    <span class="sec-num">06</span><h2>Education</h2><div class="sec-line"></div>
   </div>
   <div class="edu-grid">
     <div class="edu-card reveal">
       <div class="edu-year">Jun 2024 – Apr 2027</div>
       <h3>Don Bosco College, Panjim</h3>
-      <div class="edu-degree">Bachelor of Commerce — Financial Accounting (BCom)</div>
-      <p style="margin-top:8px; font-size:0.8rem; color:var(--muted);">Goa · Dept of Commerce · IQAC · Active student coordinator for industry programs</p>
+      <div class="edu-degree">BCom — Financial Accounting</div>
+      <p class="edu-sub">Dept of Commerce &middot; IQAC &middot; Student Coordinator for industry programs</p>
     </div>
     <div class="edu-card reveal">
       <div class="edu-year">Jun 2022 – Apr 2024</div>
       <h3>Deepvihar Higher Secondary School</h3>
       <div class="edu-degree">HSSC — Commerce Stream</div>
-      <p style="margin-top:8px; font-size:0.8rem; color:var(--muted);">Higher Secondary Certificate in Commerce</p>
     </div>
     <div class="edu-card reveal">
       <div class="edu-year">Jun 2011 – Apr 2022</div>
       <h3>Murgaon High School</h3>
-      <div class="edu-degree">SSC — Secondary School</div>
-      <p style="margin-top:8px; font-size:0.8rem; color:var(--muted);">Secondary School Certificate</p>
+      <div class="edu-degree">SSC — Secondary School Certificate</div>
     </div>
   </div>
 </section>
 
-<!-- ── CONTACT ── -->
-<section id="contact" style="background:var(--bg2); border-top:1px solid var(--border);">
+<!-- CONTACT -->
+<section id="contact" style="border-top:1px solid var(--border);">
   <div class="contact-inner reveal">
     <h2>Let's Connect</h2>
-    <p class="sub">Open to analyst roles in Financial Analytics, FP&A, MIS, or Equity Research. Remote-friendly and targeting Mumbai, Pune & Bengaluru.</p>
+    <p class="sub">Open to analyst roles in Financial Analytics, FP&amp;A, MIS, or Equity Research. Remote-friendly and targeting Mumbai, Pune &amp; Bengaluru.</p>
     <div class="open-to">
-      <span class="open-chip">Financial Analytics</span>
-      <span class="open-chip">FP&A</span>
-      <span class="open-chip">MIS</span>
-      <span class="open-chip">Equity Research</span>
-      <span class="open-chip">Remote</span>
-      <span class="open-chip">Mumbai · Pune · Bengaluru</span>
+      <span class="open-chip">Financial Analytics</span><span class="open-chip">FP&amp;A</span><span class="open-chip">MIS</span><span class="open-chip">Equity Research</span><span class="open-chip">Remote</span><span class="open-chip">Mumbai &middot; Pune &middot; Bengaluru</span>
     </div>
     <div class="contact-btns">
       <a href="https://www.linkedin.com/in/simaranshaikh" target="_blank" class="btn btn-linkedin">
-        <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         Message on LinkedIn
       </a>
-      <a href="mailto:simaranshaikh04@gmail.com" class="btn btn-accent">✉ simaranshaikh04@gmail.com</a>
-      <a href="https://github.com/Simaran-Shaikh-04" target="_blank" class="btn btn-ghost">
-        <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-        GitHub
+      <a href="https://simaran-shaikh-04.github.io/resume.pdf" target="_blank" class="btn btn-gold">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        Download CV
       </a>
+      <a href="mailto:simaranshaikh04@gmail.com" class="btn btn-accent">&#9993; Email Me</a>
+      <a href="https://github.com/Simaran-Shaikh-04" target="_blank" class="btn btn-ghost">GitHub</a>
     </div>
-    <p class="email-line" style="margin-top:18px;">📞 <a href="tel:+918329939588">+91 83299 39588</a></p>
+    <p class="email-line">&#128222; <a href="tel:+918329939588">+91 83299 39588</a></p>
   </div>
 </section>
 
-<footer>© 2026 Simaran Shaikh · Ponda, Goa, India · Built with care · <a href="https://simaran-shaikh-04.github.io" style="color:var(--accent2);text-decoration:none;">simaran-shaikh-04.github.io</a></footer>
+<footer>&#169; 2026 Simaran Shaikh &middot; Ponda, Goa, India &middot; <a href="https://simaran-shaikh-04.github.io" style="color:var(--accent2);text-decoration:none;">simaran-shaikh-04.github.io</a></footer>
 
 <script>
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('on'), i * 70);
-        io.unobserve(e.target);
-      }
+    entries.forEach((e,i) => {
+      if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('on'),i*55); io.unobserve(e.target); }
     });
-  }, { threshold: 0.07 });
-  reveals.forEach(el => io.observe(el));
+  },{threshold:0.05});
+  reveals.forEach(el=>io.observe(el));
 
-  // Photo upload
-  function handlePhoto(event) {
-    const file = event.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = e => {
-      const box = document.getElementById('photoBox');
-      box.innerHTML = '';
-      box.style.background = 'none';
-      const img = document.createElement('img');
-      img.src = e.target.result;
-      box.appendChild(img);
-    };
-    reader.readAsDataURL(file);
+  // Photo — persists via localStorage across refreshes
+  const PHOTO_KEY='simaran_portfolio_photo_v2';
+  function renderPhoto(dataUrl){
+    const box=document.getElementById('photoBox');
+    box.innerHTML=''; box.style.background='none';
+    const img=document.createElement('img');
+    img.src=dataUrl; img.alt='Simaran Shaikh';
+    box.appendChild(img);
   }
+  try{ const s=localStorage.getItem(PHOTO_KEY); if(s) renderPhoto(s); }catch(e){}
+  document.getElementById('photoInput').addEventListener('change',function(e){
+    const file=e.target.files[0]; if(!file) return;
+    const r=new FileReader();
+    r.onload=function(ev){
+      try{ localStorage.setItem(PHOTO_KEY,ev.target.result); }catch(err){}
+      renderPhoto(ev.target.result);
+    };
+    r.readAsDataURL(file);
+  });
 </script>
 </body>
 </html>
