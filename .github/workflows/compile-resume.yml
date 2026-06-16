@@ -1,0 +1,29 @@
+name: Compile LaTeX Resume
+
+on:
+  push:
+    paths:
+      - 'resume.tex'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume.tex
+
+      - name: Commit and push compiled PDF
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "[skip ci] Auto-compiled resume.pdf"
+          file_pattern: "resume.pdf"

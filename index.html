@@ -195,6 +195,42 @@
     .email-line{margin-top:16px;font-family:'DM Mono',monospace;font-size:0.78rem;color:var(--muted);}
     .email-line a{color:var(--accent2);text-decoration:none;}
 
+    /* PROFILES TAB SWITCHER */
+    .profiles-bg{background:var(--bg2);}
+    .profile-tabs{display:flex;justify-content:center;gap:12px;margin-bottom:32px;}
+    .tab-btn{background:var(--surface);border:1px solid var(--border);color:var(--muted);padding:10px 24px;border-radius:8px;font-size:0.85rem;font-weight:600;cursor:pointer;transition:all 0.25s;}
+    .tab-btn.active{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 8px 24px rgba(59,130,246,0.3);}
+    .tab-btn:hover:not(.active){border-color:var(--accent);color:var(--accent2);transform:translateY(-1px);}
+    
+    .panel-container{position:relative;}
+    .tab-panel{display:none;animation:fadeIn 0.4s ease both;}
+    .tab-panel.active{display:block;}
+    
+    .profile-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:32px;display:flex;flex-direction:column;gap:24px;}
+    .profile-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:8px;}
+    .profile-header h3{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--text);}
+    .profile-header .sub{font-size:0.84rem;color:var(--muted);margin-top:4px;}
+    .profile-meta-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;font-size:0.76rem;color:var(--muted);text-decoration:none;font-weight:500;transition:all 0.2s;}
+    .profile-meta-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
+    
+    .profile-body-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:32px;align-items:start;}
+    .profile-section-title{font-size:0.75rem;font-weight:600;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px;}
+    
+    .strategy-group{display:flex;flex-direction:column;gap:16px;}
+    .strategy-item{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);border-radius:8px;padding:16px;}
+    .strategy-item h4{font-size:0.9rem;font-weight:600;color:var(--gold2);margin-bottom:6px;}
+    .strategy-item p{font-size:0.8rem;color:var(--muted);line-height:1.5;margin-bottom:0;}
+    .strategy-item code{font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--accent2);background:rgba(59,130,246,0.08);padding:2px 6px;border-radius:4px;}
+    
+    .profile-bullets{list-style:none;display:flex;flex-direction:column;gap:12px;}
+    .profile-bullets li{display:flex;gap:10px;font-size:0.85rem;color:var(--muted);line-height:1.6;}
+    .profile-bullets li::before{content:'▸';color:var(--accent);flex-shrink:0;font-size:0.7rem;margin-top:3px;}
+    .profile-bullets li strong{color:var(--text);font-weight:500;}
+
+    @media(max-width:920px){
+      .profile-body-grid{grid-template-columns:1fr;gap:24px;}
+    }
+
     footer{position:relative;z-index:1;text-align:center;padding:22px;font-size:0.74rem;color:var(--muted);border-top:1px solid var(--border);}
 
     @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
@@ -227,11 +263,12 @@
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#profiles">Profiles</a></li>
     <li><a href="#certifications">Certs</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-right">
-    <a href="https://simaran-shaikh-04.github.io/resume.pdf" target="_blank" class="nav-resume">
+    <a href="./resume.pdf" target="_blank" class="nav-resume">
       <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
       Resume
     </a>
@@ -267,7 +304,7 @@
         <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         LinkedIn
       </a>
-      <a href="https://simaran-shaikh-04.github.io/resume.pdf" target="_blank" class="btn btn-gold">
+      <a href="./resume.pdf" target="_blank" class="btn btn-gold">
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
         Download CV
       </a>
@@ -534,10 +571,157 @@
   </div>
 </section>
 
+<!-- PROFILES -->
+<section id="profiles" class="profiles-bg">
+  <div class="section-header reveal">
+    <span class="sec-num">04</span><h2>Profiles & Strategy</h2><div class="sec-line"></div>
+  </div>
+  
+  <div class="profile-tabs reveal">
+    <button class="tab-btn active" onclick="switchProfileTab('github-tab')">GitHub README</button>
+    <button class="tab-btn" onclick="switchProfileTab('linkedin-tab')">LinkedIn Strategy</button>
+  </div>
+  
+  <div class="panel-container reveal">
+    <!-- GITHUB PANEL -->
+    <div id="github-tab" class="tab-panel active">
+      <div class="profile-card">
+        <div class="profile-header" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+          <div>
+            <h3>Simaran-Shaikh-04</h3>
+            <div class="sub">GitHub Profile README & Repository Inventory</div>
+          </div>
+          <a href="https://github.com/Simaran-Shaikh-04" target="_blank" class="profile-meta-btn">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            github.com/Simaran-Shaikh-04
+          </a>
+        </div>
+        
+        <div class="profile-body-grid">
+          <div>
+            <div class="profile-section-title">Professional Statement</div>
+            <p style="font-size:0.95rem; color:var(--text); line-height:1.7; margin-bottom:20px; font-weight:300;">
+              B.Com student (Class of 2027) pursuing a career in Equity Research, Financial Analysis, and Corporate Valuation. I focus on the core disciplines of corporate finance and investment research—building 3-statement financial models, executing corporate valuations (DCF and relative multiples), analyzing financial statements, and designing portfolio allocation strategies.
+            </p>
+            
+            <div class="profile-section-title">Core Projects Tracked</div>
+            <ul class="profile-bullets">
+              <li><span><strong>AI Equity Research Assistant:</strong> Deployed Streamlit app powered by Google Gemini 2.5 Flash, parsing reports to extract 25+ parameters with custom sector KPI scoring.</span></li>
+              <li><span><strong>UPI Transaction Dashboard:</strong> Power BI dashboard on 250,000 records featuring 9 custom DAX measures for demographic and fraud analytics.</span></li>
+              <li><span><strong>Trading Portfolio Analysis:</strong> Formulated an INR 2L deployment strategy using defensive hedges for an INR 5L client portfolio.</span></li>
+              <li><span><strong>Family Mutual Fund Analysis:</strong> Audited INR 2.39Cr family corpus, identifying asset gaps and overlaps.</span></li>
+            </ul>
+          </div>
+          
+          <div>
+            <div class="profile-section-title">GitHub Skills Focus</div>
+            <div class="skills-panel" style="gap:10px;">
+              <div class="skill-group" style="padding:12px;">
+                <div class="skill-group-title" style="margin-bottom:6px;">Valuation & Modeling</div>
+                <div class="skill-chips">
+                  <span class="chip chip-gold" style="font-size:0.68rem;">DCF</span>
+                  <span class="chip chip-gold" style="font-size:0.68rem;">Relative Valuation</span>
+                  <span class="chip chip-gold" style="font-size:0.68rem;">3-Statement</span>
+                </div>
+              </div>
+              <div class="skill-group" style="padding:12px;">
+                <div class="skill-group-title" style="margin-bottom:6px;">Financial Analysis</div>
+                <div class="skill-chips">
+                  <span class="chip chip-blue" style="font-size:0.68rem;">Ratio Analysis</span>
+                  <span class="chip chip-blue" style="font-size:0.68rem;">DuPont Analysis</span>
+                  <span class="chip chip-blue" style="font-size:0.68rem;">Variance Analysis</span>
+                </div>
+              </div>
+              <div class="skill-group" style="padding:12px;">
+                <div class="skill-group-title" style="margin-bottom:6px;">BI & Software</div>
+                <div class="skill-chips">
+                  <span class="chip chip-purple" style="font-size:0.68rem;">Power BI</span>
+                  <span class="chip chip-purple" style="font-size:0.68rem;">DAX</span>
+                  <span class="chip chip-purple" style="font-size:0.68rem;">Excel Formulas</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- LINKEDIN PANEL -->
+    <div id="linkedin-tab" class="tab-panel">
+      <div class="profile-card">
+        <div class="profile-header" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+          <div>
+            <h3>LinkedIn Profile Optimization</h3>
+            <div class="sub">Recruiter-Focused Branding & Strategy</div>
+          </div>
+          <a href="https://www.linkedin.com/in/simaran-shaikh/" target="_blank" class="profile-meta-btn" style="background:#0a66c2; color:#fff; border-color:#0a66c2;">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            linkedin.com/in/simaran-shaikh
+          </a>
+        </div>
+        
+        <div class="profile-body-grid">
+          <div>
+            <div class="profile-section-title">Recruiter Headline Options</div>
+            <div class="strategy-group" style="margin-bottom:20px;">
+              <div class="strategy-item">
+                <h4>Option 1: Combined Roles Focus (Recommended)</h4>
+                <p style="font-size:0.82rem; color:var(--text); margin-bottom:0;">
+                  <code>Financial & Equity Research Analyst | B.Com (Financial Accounting) @ Don Bosco College | Specializing in Corporate Valuation, Financial Modeling (FMVA) & Advanced Excel</code>
+                </p>
+              </div>
+              <div class="strategy-item">
+                <h4>Option 2: Skills & Value Focus</h4>
+                <p style="font-size:0.82rem; color:var(--text); margin-bottom:0;">
+                  <code>Aspiring Equity Research & Financial Analyst | FMVA Candidate | Valuation, 3-Statement Modeling & Portfolio Restructuring</code>
+                </p>
+              </div>
+            </div>
+            
+            <div class="profile-section-title">Story-Based Profile Summary ("About")</div>
+            <p style="font-size:0.83rem; color:var(--muted); line-height:1.6; margin-bottom:12px; white-space:pre-line; background:rgba(255,255,255,0.01); border:1px dashed var(--border); padding:16px; border-radius:8px; font-family:monospace;">
+              📈 B.Com student (Class of 2027) pursuing a career in Equity Research, Financial Analysis, and Corporate Valuation.
+
+              I focus on the core disciplines of corporate finance and investment research—building 3-statement financial models, executing corporate valuations (DCF and relative multiples), analyzing financial statements, and designing portfolio strategies. 
+
+              I leverage Advanced Excel, Power BI, and FMVA principles to turn financial statements into clean, actionable projection models and investment recommendations.
+            </p>
+          </div>
+          
+          <div>
+            <div class="profile-section-title">STAR Experience Alignment</div>
+            <div class="strategy-group">
+              <div class="strategy-item">
+                <h4>Precision Investments</h4>
+                <p style="font-size:0.78rem; margin-bottom:0;">Restructured a real-world client mutual fund portfolio of <strong>₹2.39Cr corpus</strong> across 28 schemes to optimize retirement cash flow.</p>
+              </div>
+              <div class="strategy-item">
+                <h4>UptoSkills India</h4>
+                <p style="font-size:0.78rem; margin-bottom:0;">Led an analyst team to perform YoY financial parameter analysis and ratio calculations on <strong>100+ public companies</strong> (FY20-24).</p>
+              </div>
+              <div class="strategy-item">
+                <h4>FICE Education</h4>
+                <p style="font-size:0.78rem; margin-bottom:0;">Developed dashboard tools tracking <strong>250,000+ transactional logs</strong> to analyze operational trends using 9 custom DAX measures.</p>
+              </div>
+            </div>
+            
+            <div class="profile-section-title" style="margin-top:20px;">Top Pinned Skills</div>
+            <div class="skill-chips" style="gap:5px;">
+              <span class="chip chip-gold" style="font-size:0.66rem; padding:3px 8px;">Financial Modeling</span>
+              <span class="chip chip-gold" style="font-size:0.66rem; padding:3px 8px;">Equity Research</span>
+              <span class="chip chip-gold" style="font-size:0.66rem; padding:3px 8px;">Financial Statement Analysis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CERTIFICATIONS -->
 <section id="certifications" class="certs-bg">
   <div class="section-header reveal">
-    <span class="sec-num">04</span><h2>Certifications</h2><div class="sec-line"></div>
+    <span class="sec-num">05</span><h2>Certifications</h2><div class="sec-line"></div>
   </div>
   <div class="certs-grid">
 
@@ -626,7 +810,7 @@
 <!-- TESTIMONIALS -->
 <section id="testimonials">
   <div class="section-header reveal">
-    <span class="sec-num">05</span><h2>Testimonials</h2><div class="sec-line"></div>
+    <span class="sec-num">06</span><h2>Testimonials</h2><div class="sec-line"></div>
   </div>
   <div class="testimonial-wrap">
     <div class="tcard reveal">
@@ -645,7 +829,7 @@
 <!-- EDUCATION -->
 <section id="education" style="background:var(--bg2);">
   <div class="section-header reveal">
-    <span class="sec-num">06</span><h2>Education</h2><div class="sec-line"></div>
+    <span class="sec-num">07</span><h2>Education</h2><div class="sec-line"></div>
   </div>
   <div class="edu-grid">
     <div class="edu-card reveal">
@@ -680,7 +864,7 @@
         <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         Message on LinkedIn
       </a>
-      <a href="https://simaran-shaikh-04.github.io/resume.pdf" target="_blank" class="btn btn-gold">
+      <a href="./resume.pdf" target="_blank" class="btn btn-gold">
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
         Download CV
       </a>
@@ -702,6 +886,26 @@
     });
   },{threshold:0.05});
   reveals.forEach(el=>io.observe(el));
+
+  // Profile tab switcher
+  function switchProfileTab(tabId) {
+    document.querySelectorAll('.profile-tabs .tab-btn').forEach(btn => {
+      btn.classList.remove('active');
+    });
+    document.querySelectorAll('.panel-container .tab-panel').forEach(panel => {
+      panel.classList.remove('active');
+    });
+    
+    // Set active button
+    if (tabId === 'github-tab') {
+      document.querySelector('.profile-tabs button:nth-child(1)').classList.add('active');
+    } else {
+      document.querySelector('.profile-tabs button:nth-child(2)').classList.add('active');
+    }
+    
+    // Set active panel
+    document.getElementById(tabId).classList.add('active');
+  }
 </script>
 </body>
 </html>

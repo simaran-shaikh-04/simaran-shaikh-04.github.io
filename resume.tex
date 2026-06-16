@@ -1,0 +1,194 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{geometry}
+\geometry{left=0.5in, top=0.5in, right=0.5in, bottom=0.5in}
+
+% Use Helvetica font
+\usepackage[scaled]{helvet}
+\renewcommand\familydefault{\sfdefault}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-6pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-4pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \small #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \small #2 \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.15in]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    {\Huge \scshape \bfseries Simaran Shaikh} \\ \vspace{4pt}
+    \small \raisebox{-0.15ex}\Phone\ +91 83299 39588 \ $|$ \ 
+    \href{mailto:simaranshaikh04@gmail.com}{simaranshaikh04@gmail.com} \ $|$ \ 
+    \href{https://www.linkedin.com/in/simaran-shaikh/}{linkedin.com/in/simaran-shaikh} \ $|$ \ 
+    \href{https://github.com/Simaran-Shaikh-04}{github.com/Simaran-Shaikh-04} \ $|$ \ 
+    \href{https://simaran-shaikh-04.github.io}{simaran-shaikh-04.github.io} \\
+    \small Ponda, Goa, India (Open to Remote \& Mumbai / Pune / Bengaluru)
+\end{center}
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Don Bosco College}{Panjim, Goa}
+      {Bachelor of Commerce (B.Com.) in Financial Accounting}{Jun 2024 -- Apr 2027}
+      \resumeItemListStart
+        \resumeItem{Student Coordinator for Commerce Department and IQAC industry programs.}
+      \resumeItemListEnd
+    \resumeSubheading
+      {Deepvihar Higher Secondary School}{Vasco, Goa}
+      {Higher Secondary School Certificate (HSSC) -- Commerce Stream}{Jun 2022 -- Apr 2024}
+    \resumeSubheading
+      {Murgaon High School}{Sada, Goa}
+      {Secondary School Certificate (SSC)}{Jun 2011 -- Apr 2022}
+  \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------
+\section{Professional Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {AI Developer \& Financial Analyst (Self-Directed Build)}{Remote}
+      {Solo Creator -- AI Equity Research Tool}{Jun 2026}
+      \resumeItemListStart
+        \resumeItem{Solo-built and deployed a \textbf{2,850-line Streamlit application} powered by Google Gemini 2.5 Flash API, hosted live on Hugging Face Spaces.}
+        \resumeItem{Engineered a parsing pipeline using PyMuPDF to extract 20--25 critical financial fields per fiscal year from corporate annual report PDFs.}
+        \resumeItem{Designed a custom scoring engine across 12 distinct sectors (FMCG, IT, NBFC, etc.) with custom KPI benchmarks and interpolated 0--100 scoring.}
+        \resumeItem{Automated the generation of structured, 9-section Word (.docx) reports with qualitative warning flags (going-concern, auditor comments, related-party transactions) and grade-to-signal rating mappings.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {UptoSkills}{Remote, India}
+      {Finance Intern \& Domain Captain (AICTE National Internship Initiative)}{Jan 2026 -- May 2026}
+      \resumeItemListStart
+        \resumeItem{Selected as Domain Captain to lead a team of 8--9 interns, managing daily task allocation, status tracking, and mid-cycle onboarding.}
+        \resumeItem{Executed detailed \textbf{Financial Parameter Analysis} for 100+ public companies, modeling 65+ key financial ratios (P/E, EPS, ROE, ROCE, leverage) across FY2020--FY2024 in Advanced Excel.}
+        \resumeItem{Organized cohort group discussions and quizzes to strengthen team competency in corporate finance and accounting frameworks.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Precision Investments}{Panjim, Goa}
+      {Equity Research Intern \& Student Coordinator}{Jan 2026 -- Mar 2026}
+      \resumeItemListStart
+        \resumeItem{Analyzed a real client trading portfolio of \textbf{INR 5,00,000} (INR 3L deployed at -5.67\% returns); applied 15 ratios per stock to structure an INR 2L recovery deployment strategy in undervalued and defensive equities (Sagility, Colgate) resulting in 3/4 calls validated within 3 months.}
+        \resumeItem{Reviewed a real \textbf{INR 2.39 Crore family mutual fund portfolio} (28 schemes across 3 members); identified a 14\% SWP funding gap, detected fund overlaps, and provided age-aligned asset rebalancing.}
+        \resumeItem{Conducted fundamental equity analysis, valuation, and write-ups for mid-cap firms, including Dynamatic Technologies.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {FICE Education}{Remote, India}
+      {Power BI Intern (Microsoft Elevate x AICTE Program)}{Feb 2026 -- Mar 2026}
+      \resumeItemListStart
+        \resumeItem{Developed a 3-page interactive performance dashboard in Power BI analyzing \textbf{250,000+ UPI transaction records} using 9 custom DAX measures.}
+        \resumeItem{Designed data models and automated cleaning pipelines using Power Query to process and identify spending trends and fraud patterns.}
+        \resumeItem{Earned a co-branded Microsoft \& AICTE certification and completed 140+ hours across Azure, AI/ML, and Copilot tools.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Key Projects}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+      {\textbf{AI Equity Research Assistant} $|$ \emph{Streamlit, Gemini 2.5 Flash, python-docx, Hugging Face}}{Jun 2026}
+      \resumeItemListStart
+        \resumeItem{Deployed a live AI-powered tool that parses PDFs and generates brokerage-grade equity research reports.}
+      \resumeItemListEnd
+    \resumeProjectHeading
+      {\textbf{UPI Transaction Performance Dashboard} $|$ \emph{Power BI, DAX, Power Query}}{Mar 2026}
+      \resumeItemListStart
+        \resumeItem{Analyzed digital transaction data to map success rates, regional volume, fraud spend, and demographic patterns.}
+      \resumeItemListEnd
+    \resumeProjectHeading
+      {\textbf{Client Portfolio Restructuring \& Recovery Hedges} $|$ \emph{Excel, Screener.in, Value Research}}{Mar 2026}
+      \resumeItemListStart
+        \resumeItem{Formulated a real-money deployment strategy for INR 2L and audited INR 2.39Cr mutual fund asset allocation.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------TECHNICAL SKILLS-----------
+\section{Skills \& Competencies}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{BI \& Analytics}{: Power BI, DAX, Power Query, Data Modeling, Advanced Excel (XLOOKUP, Pivot Tables)} \\
+     \textbf{Finance \& Research}{: Equity Research, Corporate Valuation (DCF, Multiples), Ratio Analysis, Portfolio Management, Mutual Funds} \\
+     \textbf{AI \& Developer Tools}{: Google Gemini API, Streamlit, Hugging Face, Screener.in, Value Research Online}
+    }}
+ \end{itemize}
+
+%-----------CERTIFICATIONS-----------
+\section{Certifications \& Leadership}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+      {\textbf{McKinsey Forward Learner} -- Selected for 10-week global program on problem-solving \& business frameworks}{2026}
+    \resumeProjectHeading
+      {\textbf{Finance Internship -- Domain Captain} (UptoSkills, Cert ID: US-INT-2026-FESS25B)}{2026}
+    \resumeProjectHeading
+      {\textbf{Power BI for Business Applications} (Microsoft \& AICTE, Student ID: STU69632bd1022821768106961)}{2026}
+    \resumeProjectHeading
+      {\textbf{Business Intelligence -- Advanced Excel \& Power BI} (ExcelR EdTech, ID: 130582/EXCELR/EDL/26022026)}{2026}
+    \resumeProjectHeading
+      {\textbf{Equity Research \& Portfolio Strategy} (Don Bosco College Department of Commerce \& IQAC)}{2026}
+    \resumeProjectHeading
+      {\textbf{Advanced Excel with AI} (Internshala)}{2025}
+    \resumeProjectHeading
+      {\textbf{AI Literacy} (IBM-Credly / NIELIT)}{2025 -- 2026}
+  \resumeSubHeadingListEnd
+
+\end{document}
