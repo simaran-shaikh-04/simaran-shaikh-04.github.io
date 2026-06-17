@@ -16,20 +16,25 @@ Modern generative AI models have vastly different reasoning engines, syntax pref
 
 ## 🏗️ Core Features & Capabilities
 
-AI Prompt Studio v2.0 is structured into **6 modular tabs**, each focusing on a distinct phase of prompt engineering, academic research, or career transition:
+AI Prompt Studio v2.0 is structured into **7 modular tabs**, each focusing on a distinct phase of prompt engineering, academic research, user guidance, or career transition:
 
-### 1. 🎯 Prompt Forge
+### 1. 📖 User Guide
+* **Interactive Tutorial**: Step-by-step guidance on how to generate free API keys and navigate the studio.
+* **Troubleshooting & FAQs**: Real-time troubleshooting tips and answers to common generative AI questions.
+* **Pro Result Tips**: Actionable best practices to structure questions for maximum response fidelity.
+
+### 2. 🎯 Prompt Forge
 * **Targeted Compiler**: Supports 8 free AI models (Gemini, NotebookLM, AI Studio, ChatGPT, Claude, Perplexity, Le Chat, DeepSeek, Grok).
 * **Cognitive Optimization**: Adapts prompt structures based on the model's preferred syntax (e.g., XML tags for Claude, System/User separation for AI Studio, direct rules for Mistral).
 * **Interactive Refinement**: Generates 3–5 custom reflective questions to probe audience intent, edge cases, and output formatting.
 * **Context Loading**: Accepts text briefs, files, or screenshot attachments to ground the generated prompt.
 
-### 2. 🔗 Context Bridge
+### 3. 🔗 Context Bridge
 * **Cross-AI Continuation**: Restores conversational state when you hit model usage limits. Paste chat text or upload screenshots from a previous session.
 * **Smart Summarization**: Automatically extracts key decisions, system variables, frameworks, and progress markers into a collapsible log.
 * **Bridge Generation**: Generates a custom continuation prompt for your target model, ensuring it inherits the previous AI's context.
 
-### 3. 🎓 Student Suite
+### 4. 🎓 Student Suite
 * **AI Prompt Builder**: 7 optimized student presets with full scoping flows:
   * *Study Notes & Active Recall* (Cornell & Anki card outputs)
   * *Assignment & Research Blueprint* (MLA/APA citation structuring)
@@ -40,18 +45,18 @@ AI Prompt Studio v2.0 is structured into **6 modular tabs**, each focusing on a 
   * *Internship Log & Performance Writer* (Formal academic report drafts)
 * **NotebookLM Suite**: Creates slides, video scripts, and dual-host podcast prompts optimized for Google NotebookLM.
 
-### 4. 🖼️ Image Studio
+### 5. 🖼️ Image Studio
 * **Syntax Dialect Enhancer**: Elevates simple descriptive ideas into detailed prompts for Midjourney, DALL-E 3, FLUX, Stable Diffusion, and Gemini.
 * **Style Engine**: Supports distinct output dialects:
   * *Natural Dialect*: Vivid descriptive paragraphs (FLUX, Gemini).
   * *Tag Dialect*: Comma-separated descriptors with parameters like `--ar` or `--no` (Midjourney).
   * *Weighted Dialect*: Dynamic weights (e.g., `(token:1.2)`) and explicit negative prompt separation.
 
-### 5. 📚 Resource Hub
+### 6. 📚 Resource Hub
 * **Curriculum Builder**: Selected directory of high-quality free learning resources.
 * **Custom Syllabus Generator**: Select resources and describe a learning goal to generate a complete markdown syllabus and copy-pasteable prompts to start studying.
 
-### 6. 💼 Career Hub
+### 7. 💼 Career Hub
 * **SQL & Analytics Pathways**: Hands-on roadmaps for database querying and analytics.
 * **Commerce-to-Tech Bridge**: Guidance tailored for B.Com and financial accounting students transitioning into data analytics, finance technology, and emerging AI roles.
 
@@ -131,7 +136,8 @@ ai-prompt-studio/
 │       ├── ResourceHub.tsx         # Learning hub and curriculum compiler
 │       ├── CareerHub.tsx           # B.Com career navigation pathways
 │       ├── ApiKeyModal.tsx         # Gemini API key setup modal
-│       └── HistoryDrawer.tsx       # Clipboard history slide-out drawer
+│       ├── HistoryDrawer.tsx       # Clipboard history slide-out drawer
+│       └── UserManual.tsx          # Step-by-step tutorial and FAQ tab
 ```
 
 ---
