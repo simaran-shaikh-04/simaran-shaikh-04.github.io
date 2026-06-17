@@ -12,7 +12,7 @@ I focus on the core disciplines of corporate finance and investment research—b
 
 I leverage Advanced Excel, Power BI, and FMVA principles to turn financial statements into clean, actionable projection models and investment recommendations.
 
-- 📍 Ponda, Goa · Open to **Remote Roles** & **Mumbai / Pune / Bengaluru Opportunities**
+- 📍 Ponda, Goa · Open to **Goa & Remote Roles**
 - 🎓 BCom Financial Accounting · June 2024 – April 2027
 - 📬 [simaranshaikh04@gmail.com](mailto:simaranshaikh04@gmail.com)
 - 💼 [linkedin.com/in/simaran-shaikh](https://www.linkedin.com/in/simaran-shaikh/)
