@@ -12,7 +12,7 @@
 \usepackage[english]{babel}
 \usepackage{tabularx}
 \usepackage{geometry}
-\geometry{left=0.5in, top=0.45in, right=0.5in, bottom=0.45in}
+\geometry{left=0.5in, top=0.5in, right=0.5in, bottom=0.5in}
 
 % Use Helvetica font
 \usepackage[scaled]{helvet}
@@ -33,41 +33,41 @@
 \raggedright
 \setlength{\tabcolsep}{0in}
 
-% Sections formatting with tight, system-wide titlesec spacing
+% Sections formatting with professional titlesec spacing (no congested titles)
 \titleformat{\section}{
   \scshape\raggedright\large\bfseries
 }{}{0em}{}[\color{black}\titlerule]
-\titlespacing*{\section}{0pt}{4pt}{4pt}
+\titlespacing*{\section}{0pt}{10pt}{5pt}
 
 % Ensure that generate pdf is machine readable/ATS parsable
 \pdfgentounicode=1
 
-% Custom commands for structured listing
+% Custom commands for structured listing with readable spacing
 \newcommand{\resumeItem}[1]{
   \item\small{
-    {#1 \vspace{-2pt}}
+    {#1 \vspace{-1pt}}
   }
 }
 
 \newcommand{\resumeSubheading}[4]{
-  \vspace{-2pt}\item
+  \vspace{-1pt}\item
     \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & \small #2 \\
       \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-6pt}
+    \end{tabular*}\vspace{-2pt} % Fixed overlapping by increasing vertical space from -6pt to -2pt
 }
 
 \newcommand{\resumeProjectHeading}[2]{
-    \vspace{-2pt}\item
+    \vspace{-1pt}\item
     \begin{tabular*}{1.0\textwidth}{l@{\extracolsep{\fill}}r}
       \textbf{#1} & \small #2 \\
-    \end{tabular*}\vspace{-6pt}
+    \end{tabular*}\vspace{-2pt}
 }
 
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}, topsep=0pt, partopsep=0pt, itemsep=4pt, parsep=0pt]}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}, topsep=0pt, partopsep=0pt, itemsep=6pt, parsep=0pt]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{-2pt}}
-\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.15in, topsep=1pt, parsep=0pt, itemsep=1pt]}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-4pt}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.15in, topsep=2pt, parsep=0pt, itemsep=2pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2pt}}
 
 %-------------------------------------------
 %%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -92,7 +92,7 @@
   \resumeSubHeadingListStart
     \resumeSubheading
       {Don Bosco College}{Panjim, Goa}
-      {Bachelor of Commerce (B.Com.) in Financial Accounting (IQAC Student Coordinator)}{Jun 2024 -- Apr 2027}
+      {Bachelor of Commerce (B.Com.) in Financial Accounting}{Jun 2024 -- Apr 2027}
     \resumeSubheading
       {Deepvihar Higher Secondary School}{Vasco, Goa}
       {Higher Secondary School Certificate (HSSC) -- Commerce Stream}{Jun 2022 -- Apr 2024}
@@ -120,7 +120,7 @@
 
     \resumeSubheading
       {Precision Investments}{Panjim, Goa}
-      {Equity Research Intern \& Student Coordinator}{Jan 2026 -- Mar 2026}
+      {Equity Research Intern}{Jan 2026 -- Mar 2026}
       \resumeItemListStart
         \resumeItem{Analyzed INR 5L client portfolio, structuring an INR 2L recovery hedge strategy in defensive stocks (Colgate, Sagility) with 3/4 calls validated.}
         \resumeItem{Audited INR 2.39Cr family mutual fund portfolio (28 schemes); identified 14\% SWP funding gap and recommended asset rebalancing.}
@@ -138,7 +138,7 @@
 
 %-----------PROJECTS-----------
 \section{Key Projects}
-  \begin{itemize}[leftmargin=0.15in, label={}, itemsep=-2pt, parsep=0pt, topsep=0pt]
+  \begin{itemize}[leftmargin=0.15in, label={}, itemsep=2.5pt, parsep=0pt, topsep=2pt]
     \small
     \item \textbf{AI Equity Research Assistant} -- Live Streamlit app extracting 25 PDF financial fields to generate Word reports.
     \item \textbf{UPI Transaction Performance Dashboard} -- 3-page interactive Power BI dashboard on 250,000+ records.
@@ -148,7 +148,7 @@
 
 %-----------TECHNICAL SKILLS-----------
 \section{Skills \& Competencies}
- \begin{itemize}[leftmargin=0.15in, label={}, itemsep=-2pt, parsep=0pt, topsep=0pt]
+ \begin{itemize}[leftmargin=0.15in, label={}, itemsep=2.5pt, parsep=0pt, topsep=2pt]
     \small
     \item \textbf{Finance \& Research}{: Equity Research, Corporate Valuation (DCF, Relative), Portfolio Management, Mutual Funds, 3-Statement Modeling, DuPont Analysis, Financial Ratio Analysis, FP\&A}
     \item \textbf{BI \& Data Analytics}{: Power BI, DAX, Power Query, Advanced Excel (XLOOKUP, Pivot Tables, Formulas), Data Modeling, Variance Analysis, Spend Analytics}
@@ -158,7 +158,7 @@
 
 %-----------CERTIFICATIONS-----------
 \section{Certifications \& Leadership}
-  \begin{itemize}[leftmargin=0.15in, label={}, itemsep=-2pt, parsep=0pt, topsep=0pt]
+  \begin{itemize}[leftmargin=0.15in, label={}, itemsep=2.5pt, parsep=0pt, topsep=2pt]
     \small
     \item \textbf{McKinsey Forward Program} -- 10-week selective program on business frameworks \& structured problem solving \hfill 2026
     \item \textbf{Finance Domain Captain} -- Led team of 8--9 interns in AICTE-UptoSkills national corporate analysis cohort \hfill 2026
