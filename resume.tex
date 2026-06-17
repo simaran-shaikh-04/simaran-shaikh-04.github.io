@@ -12,7 +12,7 @@
 \usepackage[english]{babel}
 \usepackage{tabularx}
 \usepackage{geometry}
-\geometry{left=0.5in, top=0.5in, right=0.5in, bottom=0.5in}
+\geometry{left=0.5in, top=0.45in, right=0.5in, bottom=0.45in}
 
 % Use Helvetica font
 \usepackage[scaled]{helvet}
@@ -24,16 +24,19 @@
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 
+% Adjust footskip to fix fancyhdr warning
+\setlength{\footskip}{4.1pt}
+
 \urlstyle{same}
 
 \raggedbottom
 \raggedright
 \setlength{\tabcolsep}{0in}
 
-% Sections formatting
+% Sections formatting with tight spacing
 \titleformat{\section}{
-  \vspace{-6pt}\scshape\raggedright\large\bfseries
-}{}{0em}{}[\color{black}\titlerule \vspace{-4pt}]
+  \vspace{-10pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
 % Ensure that generate pdf is machine readable/ATS parsable
 \pdfgentounicode=1
@@ -41,28 +44,28 @@
 % Custom commands
 \newcommand{\resumeItem}[1]{
   \item\small{
-    {#1 \vspace{-2pt}}
+    {#1 \vspace{-2.5pt}}
   }
 }
 
 \newcommand{\resumeSubheading}[4]{
-  \vspace{-1pt}\item
+  \vspace{-3pt}\item
     \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & \small #2 \\
       \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-5pt}
+    \end{tabular*}\vspace{-7pt}
 }
 
 \newcommand{\resumeProjectHeading}[2]{
-    \vspace{-1pt}\item
+    \vspace{-4pt}\item
     \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
       \textbf{#1} & \small #2 \\
-    \end{tabular*}\vspace{-5pt}
+    \end{tabular*}\vspace{-7pt}
 }
 
 \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
-\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.15in]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{-2pt}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.15in, topsep=1pt, parsep=1pt, itemsep=1.5pt]}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
 
 %-------------------------------------------
@@ -73,7 +76,7 @@
 
 %----------HEADING----------
 \begin{center}
-    {\Huge \scshape \bfseries Simaran Shaikh} \\ \vspace{4pt}
+    {\Huge \scshape \bfseries Simaran Shaikh} \\ \vspace{3pt}
     \small \faPhone\ +91 83299 39588 \ $|$ \ 
     \faEnvelope\ \href{mailto:simaranshaikh04@gmail.com}{simaranshaikh04@gmail.com} \ $|$ \ 
     \faLinkedin\ \href{https://www.linkedin.com/in/simaran-shaikh/}{linkedin.com/in/simaran-shaikh} \ $|$ \ 
@@ -94,9 +97,6 @@
     \resumeSubheading
       {Deepvihar Higher Secondary School}{Vasco, Goa}
       {Higher Secondary School Certificate (HSSC) -- Commerce Stream}{Jun 2022 -- Apr 2024}
-    \resumeSubheading
-      {Murgaon High School}{Sada, Goa}
-      {Secondary School Certificate (SSC)}{Jun 2011 -- Apr 2022}
   \resumeSubHeadingListEnd
 
 %-----------EXPERIENCE-----------
@@ -137,7 +137,7 @@
       \resumeItemListStart
         \resumeItem{Developed a 3-page interactive performance dashboard in Power BI analyzing \textbf{250,000+ UPI transaction records} using 9 custom DAX measures.}
         \resumeItem{Designed data models and automated cleaning pipelines using Power Query to process and identify spending trends and fraud patterns.}
-        \resumeItem{Earned a co-branded Microsoft \& AICTE certification and completed 140+ hours across Azure, AI/ML, and Copilot tools.}
+        \resumeItem{Completed 140+ hours across Azure, AI/ML, and Copilot tools, earning a co-branded Microsoft \& AICTE certification.}
       \resumeItemListEnd
 
   \resumeSubHeadingListEnd
@@ -155,40 +155,28 @@
       \resumeItemListStart
         \resumeItem{Analyzed digital transaction data to map success rates, regional volume, fraud spend, and demographic patterns.}
       \resumeItemListEnd
-    \resumeProjectHeading
-      {\textbf{Client Portfolio Restructuring \& Recovery Hedges} $|$ \emph{Excel, Screener.in, Value Research}}{Mar 2026}
-      \resumeItemListStart
-        \resumeItem{Formulated a real-money deployment strategy for INR 2L and audited INR 2.39Cr mutual fund asset allocation.}
-      \resumeItemListEnd
   \resumeSubHeadingListEnd
 
 %-----------TECHNICAL SKILLS-----------
 \section{Skills \& Competencies}
- \begin{itemize}[leftmargin=0.15in, label={}]
-    \small{\item{
-     \textbf{BI \& Analytics}{: Power BI, DAX, Power Query, Data Modeling, Advanced Excel (XLOOKUP, Pivot Tables)} \\
-     \textbf{Finance \& Research}{: Equity Research, Corporate Valuation (DCF, Multiples), Ratio Analysis, Portfolio Management, Mutual Funds} \\
-     \textbf{AI \& Developer Tools}{: Google Gemini API, Streamlit, Hugging Face, Screener.in, Value Research Online}
-    }}
+ \begin{itemize}[leftmargin=0.15in, label={}, itemsep=-2pt, parsep=0pt, topsep=0pt]
+    \small
+    \item \textbf{BI \& Analytics}{: Power BI, DAX, Power Query, Data Modeling, Advanced Excel (XLOOKUP, Pivot Tables)}
+    \item \textbf{Finance \& Research}{: Equity Research, Corporate Valuation (DCF, Multiples), Ratio Analysis, Portfolio Management, Mutual Funds}
+    \item \textbf{AI \& Developer Tools}{: Google Gemini API, Streamlit, Hugging Face, Screener.in, Value Research Online}
  \end{itemize}
 
 %-----------CERTIFICATIONS-----------
 \section{Certifications \& Leadership}
-  \resumeSubHeadingListStart
-    \resumeProjectHeading
-      {\textbf{McKinsey Forward Learner} -- Selected for 10-week global program on problem-solving \& business frameworks}{2026}
-    \resumeProjectHeading
-      {\textbf{Finance Internship -- Domain Captain} (UptoSkills, Cert ID: US-INT-2026-FESS25B)}{2026}
-    \resumeProjectHeading
-      {\textbf{Power BI for Business Applications} (Microsoft \& AICTE, Student ID: STU69632bd1022821768106961)}{2026}
-    \resumeProjectHeading
-      {\textbf{Business Intelligence -- Advanced Excel \& Power BI} (ExcelR EdTech, ID: 130582/EXCELR/EDL/26022026)}{2026}
-    \resumeProjectHeading
-      {\textbf{Equity Research \& Portfolio Strategy} (Don Bosco College Department of Commerce \& IQAC)}{2026}
-    \resumeProjectHeading
-      {\textbf{Advanced Excel with AI} (Internshala)}{2025}
-    \resumeProjectHeading
-      {\textbf{AI Literacy} (IBM-Credly / NIELIT)}{2025 -- 2026}
-  \resumeSubHeadingListEnd
+  \begin{itemize}[leftmargin=0.15in, label={}, itemsep=-2pt, parsep=0pt, topsep=0pt]
+    \small
+    \item \textbf{McKinsey Forward Learner} -- 10-week global program on problem-solving \& business frameworks \hfill 2026
+    \item \textbf{Finance Internship -- Domain Captain} (UptoSkills, Cert ID: US-INT-2026-FESS25B) \hfill 2026
+    \item \textbf{Power BI for Business Applications} (Microsoft \& AICTE, ID: STU69632bd1022821768106961) \hfill 2026
+    \item \textbf{Business Intelligence} -- Advanced Excel \& Power BI (ExcelR EdTech, ID: 130582/EXCELR/EDL/26022026) \hfill 2026
+    \item \textbf{Equity Research \& Portfolio Strategy} (Don Bosco College Department of Commerce \& IQAC) \hfill 2026
+    \item \textbf{Advanced Excel with AI} (Internshala) \hfill 2025
+    \item \textbf{AI Literacy} (IBM-Credly / NIELIT) \hfill 2025 -- 2026
+  \end{itemize}
 
 \end{document}
