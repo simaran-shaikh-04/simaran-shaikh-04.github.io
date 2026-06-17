@@ -12,7 +12,7 @@
 \usepackage[english]{babel}
 \usepackage{tabularx}
 \usepackage{geometry}
-\geometry{left=0.5in, top=0.45in, right=0.5in, bottom=0.45in}
+\geometry{left=0.5in, top=0.4in, right=0.5in, bottom=0.4in}
 
 % Use Helvetica font
 \usepackage[scaled]{helvet}
@@ -35,8 +35,8 @@
 
 % Sections formatting with tight spacing
 \titleformat{\section}{
-  \vspace{-10pt}\scshape\raggedright\large\bfseries
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+  \vspace{-12pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-6pt}]
 
 % Ensure that generate pdf is machine readable/ATS parsable
 \pdfgentounicode=1
@@ -50,7 +50,7 @@
 
 \newcommand{\resumeSubheading}[4]{
   \vspace{-3pt}\item
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & \small #2 \\
       \textit{\small#3} & \textit{\small #4} \\
     \end{tabular*}\vspace{-7pt}
@@ -58,7 +58,7 @@
 
 \newcommand{\resumeProjectHeading}[2]{
     \vspace{-4pt}\item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+    \begin{tabular*}{1.0\textwidth}{l@{\extracolsep{\fill}}r}
       \textbf{#1} & \small #2 \\
     \end{tabular*}\vspace{-7pt}
 }
@@ -76,13 +76,14 @@
 
 %----------HEADING----------
 \begin{center}
-    {\Huge \scshape \bfseries Simaran Shaikh} \\ \vspace{3pt}
-    \small \faPhone\ +91 83299 39588 \ $|$ \ 
+    {\Huge \bfseries Simaran Shaikh} \\ \vspace{6pt}
+    \small 
+    \faPhone\ +91 83299 39588 \ $|$ \ 
     \faEnvelope\ \href{mailto:simaranshaikh04@gmail.com}{simaranshaikh04@gmail.com} \ $|$ \ 
+    \faMapMarker\ Goa, India (Open to Remote \& Relocation) \\ \vspace{3pt}
     \faLinkedin\ \href{https://www.linkedin.com/in/simaran-shaikh/}{linkedin.com/in/simaran-shaikh} \ $|$ \ 
     \faGithub\ \href{https://github.com/Simaran-Shaikh-04}{github.com/Simaran-Shaikh-04} \ $|$ \ 
-    \faGlobe\ \href{https://simaran-shaikh-04.github.io}{simaran-shaikh-04.github.io} \\
-    \small Ponda, Goa, India (Open to Remote \& Mumbai / Pune / Bengaluru)
+    \faGlobe\ \href{https://simaran-shaikh-04.github.io}{simaran-shaikh-04.github.io}
 \end{center}
 
 %-----------EDUCATION-----------
@@ -107,37 +108,33 @@
       {AI Developer \& Financial Analyst (Self-Directed Build)}{Remote}
       {Solo Creator -- AI Equity Research Tool}{Jun 2026}
       \resumeItemListStart
-        \resumeItem{Solo-built and deployed a \textbf{2,850-line Streamlit application} powered by Google Gemini 2.5 Flash API, hosted live on Hugging Face Spaces.}
-        \resumeItem{Engineered a parsing pipeline using PyMuPDF to extract 20--25 critical financial fields per fiscal year from corporate annual report PDFs.}
-        \resumeItem{Designed a custom scoring engine across 12 distinct sectors (FMCG, IT, NBFC, etc.) with custom KPI benchmarks and interpolated 0--100 scoring.}
-        \resumeItem{Automated the generation of structured, 9-section Word (.docx) reports with qualitative warning flags (going-concern, auditor comments, related-party transactions) and grade-to-signal rating mappings.}
+        \resumeItem{Solo-built and deployed a 2,850-line Streamlit application powered by Google Gemini 2.5 Flash API on Hugging Face.}
+        \resumeItem{Engineered parsing pipeline using PyMuPDF to extract 20--25 critical financial fields per year from annual report PDFs.}
+        \resumeItem{Designed scoring engine across 12 sectors with KPI benchmarks and automated 9-section Word (.docx) report generation.}
       \resumeItemListEnd
 
     \resumeSubheading
       {UptoSkills}{Remote, India}
       {Finance Intern \& Domain Captain (AICTE National Internship Initiative)}{Jan 2026 -- May 2026}
       \resumeItemListStart
-        \resumeItem{Selected as Domain Captain to lead a team of 8--9 interns, managing daily task allocation, status tracking, and mid-cycle onboarding.}
-        \resumeItem{Executed detailed \textbf{Financial Parameter Analysis} for 100+ public companies, modeling 65+ key financial ratios (P/E, EPS, ROE, ROCE, leverage) across FY2020--FY2024 in Advanced Excel.}
-        \resumeItem{Organized cohort group discussions and quizzes to strengthen team competency in corporate finance and accounting frameworks.}
+        \resumeItem{Selected as Domain Captain to lead a team of 8--9 interns, managing task allocation and daily status tracking.}
+        \resumeItem{Executed Financial Parameter Analysis for 100+ public companies, modeling 65+ ratios across FY2020--FY2024 in Advanced Excel.}
       \resumeItemListEnd
 
     \resumeSubheading
       {Precision Investments}{Panjim, Goa}
       {Equity Research Intern \& Student Coordinator}{Jan 2026 -- Mar 2026}
       \resumeItemListStart
-        \resumeItem{Analyzed a real client trading portfolio of \textbf{INR 5,00,000} (INR 3L deployed at -5.67\% returns); applied 15 ratios per stock to structure an INR 2L recovery deployment strategy in undervalued and defensive equities (Sagility, Colgate) resulting in 3/4 calls validated within 3 months.}
-        \resumeItem{Reviewed a real \textbf{INR 2.39 Crore family mutual fund portfolio} (28 schemes across 3 members); identified a 14\% SWP funding gap, detected fund overlaps, and provided age-aligned asset rebalancing.}
-        \resumeItem{Conducted fundamental equity analysis, valuation, and write-ups for mid-cap firms, including Dynamatic Technologies.}
+        \resumeItem{Analyzed INR 5,00,000 client portfolio, structuring an INR 2,00,000 recovery hedge strategy in defensive stocks (Colgate, Sagility) with 3/4 calls validated.}
+        \resumeItem{Audited INR 2.39Cr family mutual fund portfolio (28 schemes); identified 14\% SWP funding gap and recommended age-aligned asset rebalancing.}
       \resumeItemListEnd
 
     \resumeSubheading
       {FICE Education}{Remote, India}
       {Power BI Intern (Microsoft Elevate x AICTE Program)}{Feb 2026 -- Mar 2026}
       \resumeItemListStart
-        \resumeItem{Developed a 3-page interactive performance dashboard in Power BI analyzing \textbf{250,000+ UPI transaction records} using 9 custom DAX measures.}
-        \resumeItem{Designed data models and automated cleaning pipelines using Power Query to process and identify spending trends and fraud patterns.}
-        \resumeItem{Completed 140+ hours across Azure, AI/ML, and Copilot tools, earning a co-branded Microsoft \& AICTE certification.}
+        \resumeItem{Developed a 3-page interactive performance dashboard in Power BI analyzing 250,000+ UPI transaction records using 9 custom DAX measures.}
+        \resumeItem{Designed data models and automated cleaning pipelines using Power Query to identify transaction trends.}
       \resumeItemListEnd
 
   \resumeSubHeadingListEnd
@@ -146,14 +143,24 @@
 \section{Key Projects}
   \resumeSubHeadingListStart
     \resumeProjectHeading
-      {\textbf{AI Equity Research Assistant} $|$ \emph{Streamlit, Gemini 2.5 Flash, python-docx, Hugging Face}}{Jun 2026}
+      {\textbf{AI Equity Research Assistant} $|$ \emph{Gemini 2.5 Flash, Streamlit, python-docx, Hugging Face}}{Jun 2026}
       \resumeItemListStart
-        \resumeItem{Deployed a live AI-powered tool that parses PDFs and generates brokerage-grade equity research reports.}
+        \resumeItem{Deployed a live AI agent that parses corporate PDF reports and generates 9-section investment research documents.}
       \resumeItemListEnd
     \resumeProjectHeading
       {\textbf{UPI Transaction Performance Dashboard} $|$ \emph{Power BI, DAX, Power Query}}{Mar 2026}
       \resumeItemListStart
-        \resumeItem{Analyzed digital transaction data to map success rates, regional volume, fraud spend, and demographic patterns.}
+        \resumeItem{Built an interactive dashboard to map success rates, fraud trends, and regional metrics across 250,000+ UPI records.}
+      \resumeItemListEnd
+    \resumeProjectHeading
+      {\textbf{Trading Portfolio Analysis \& Recovery} $|$ \emph{Equity Research, Screener.in}}{Mar 2026}
+      \resumeItemListStart
+        \resumeItem{Formulated an INR 2L recovery re-allocation plan for an INR 5L client portfolio, validating 3 out of 4 stock calls.}
+      \resumeItemListEnd
+    \resumeProjectHeading
+      {\textbf{Family Mutual Fund Portfolio Optimization} $|$ \emph{Mutual Funds, Value Research Online}}{Mar 2026}
+      \resumeItemListStart
+        \resumeItem{Audited INR 2.39Cr corpus across 28 schemes to structure retirement rebalancing and identify a 14\% SWP funding gap.}
       \resumeItemListEnd
   \resumeSubHeadingListEnd
 
@@ -161,22 +168,21 @@
 \section{Skills \& Competencies}
  \begin{itemize}[leftmargin=0.15in, label={}, itemsep=-2pt, parsep=0pt, topsep=0pt]
     \small
-    \item \textbf{BI \& Analytics}{: Power BI, DAX, Power Query, Data Modeling, Advanced Excel (XLOOKUP, Pivot Tables)}
-    \item \textbf{Finance \& Research}{: Equity Research, Corporate Valuation (DCF, Multiples), Ratio Analysis, Portfolio Management, Mutual Funds}
-    \item \textbf{AI \& Developer Tools}{: Google Gemini API, Streamlit, Hugging Face, Screener.in, Value Research Online}
+    \item \textbf{Finance \& Research}{: Equity Research, Corporate Valuation (DCF, Relative), Portfolio Management, Mutual Funds, 3-Statement Modeling, DuPont Analysis, Financial Ratio Analysis, FP\&A}
+    \item \textbf{BI \& Data Analytics}{: Power BI, DAX, Power Query, Advanced Excel (XLOOKUP, Pivot Tables, Formulas), Data Modeling, Variance Analysis, Spend Analytics}
+    \item \textbf{AI \& Developer Tools}{: Google Gemini API, Streamlit, Hugging Face, Python (pandas, PyMuPDF, python-docx), GitHub, Screener.in, Value Research Online}
+    \item \textbf{Leadership \& Soft Skills}{: Team Leadership, Task Allocation \& Status Tracking, Project Coordination, Structured Problem Solving}
  \end{itemize}
 
 %-----------CERTIFICATIONS-----------
 \section{Certifications \& Leadership}
   \begin{itemize}[leftmargin=0.15in, label={}, itemsep=-2pt, parsep=0pt, topsep=0pt]
     \small
-    \item \textbf{McKinsey Forward Learner} -- 10-week global program on problem-solving \& business frameworks \hfill 2026
-    \item \textbf{Finance Internship -- Domain Captain} (UptoSkills, Cert ID: US-INT-2026-FESS25B) \hfill 2026
-    \item \textbf{Power BI for Business Applications} (Microsoft \& AICTE, ID: STU69632bd1022821768106961) \hfill 2026
-    \item \textbf{Business Intelligence} -- Advanced Excel \& Power BI (ExcelR EdTech, ID: 130582/EXCELR/EDL/26022026) \hfill 2026
-    \item \textbf{Equity Research \& Portfolio Strategy} (Don Bosco College Department of Commerce \& IQAC) \hfill 2026
-    \item \textbf{Advanced Excel with AI} (Internshala) \hfill 2025
-    \item \textbf{AI Literacy} (IBM-Credly / NIELIT) \hfill 2025 -- 2026
+    \item \textbf{McKinsey Forward Program} -- 10-week selective program on business frameworks \& structured problem solving \hfill 2026
+    \item \textbf{Finance Domain Captain} -- Led team of 8--9 interns in AICTE-UptoSkills national corporate analysis cohort \hfill 2026
+    \item \textbf{Power BI for Business Applications} -- Microsoft \& AICTE Professional Certification (ID: STU69632bd1022821768106961) \hfill 2026
+    \item \textbf{Business Intelligence (Power BI \& Excel)} -- Advanced ExcelR EdTech Certification (ID: 130582/EXCELR/EDL/26022026) \hfill 2026
+    \item \textbf{Equity Research \& Portfolio Strategy} -- Certified by Don Bosco College IQAC Industry Program \hfill 2026
   \end{itemize}
 
 \end{document}
