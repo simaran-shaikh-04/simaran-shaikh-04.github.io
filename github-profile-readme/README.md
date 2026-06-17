@@ -36,7 +36,7 @@ I leverage Advanced Excel, Power BI, and FMVA principles to turn financial state
 > React 19 · TypeScript · Tailwind CSS v4 · Express · Google Gen AI SDK · Docker  
 > Live Space: [huggingface.co/spaces/LumoraX/equity-research-pro](https://huggingface.co/spaces/LumoraX/equity-research-pro)
 
-Full-stack corporate valuation and equity analysis application. Automatically parses annual report PDFs with Gemini 2.5 Flash, extracts 25+ key financial metrics, benchmarks across 17 sector-specific engines, performs DuPont analysis, conducts MD&A YoY NarrativeDiff comparison, and generates structured Word (.docx) and Excel (.xlsx) financial models.
+Built during the Edunet Foundation × IBM SkillsBuild × AICTE AI Internship. Solves the verification gap by linking extracted metrics directly to their source pages in annual report PDFs. Designed the financial workflows and sector logic (17 sectors) dynamically during building through research and Claude AI guidance, implementing the full-stack React + Node.js + Docker app using Claude Code with no prior coding background. Tested on HDFC and ICICI Bank annual reports (FY2023–25).
 
 ---
 
