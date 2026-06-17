@@ -1,0 +1,6 @@
+{
+  "name": "AI Prompt Studio",
+  "description": "Multi-model AI prompt engineering for free tools. Generate optimized prompts for Gemini, NotebookLM, Google AI Studio, ChatGPT, Claude, Perplexity, Mistral, DeepSeek, and Grok. Includes Context Bridge for seamless cross-AI continuation when you hit usage limits.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

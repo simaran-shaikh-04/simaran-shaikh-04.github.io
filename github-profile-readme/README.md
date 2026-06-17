@@ -40,6 +40,15 @@ Solo-built a **2,850-line Streamlit application** integrated with Google Gemini 
 
 ---
 
+### 🚀 [AI Prompt Studio](https://github.com/Simaran-Shaikh-04/AI-Prompt-Studio)
+> React 19 · TypeScript · Tailwind CSS v4 · Express · Google Gen AI SDK · Docker  
+> Live Space: [huggingface.co/spaces/LumoraX/ai-prompt-studio](https://huggingface.co/spaces/LumoraX/ai-prompt-studio)
+
+Client-side-optimized prompt compiler and migration workspace supporting 8+ AI models (Gemini, ChatGPT, Claude, DeepSeek, etc.). Automatically translates prompts based on target model syntax, enhances image prompting dialects, bridges chat history across rate limits, and includes custom student and career roadmap suites.
+
+---
+
+
 ### 📊 [UPI Transaction Dashboard](https://github.com/Simaran-Shaikh-04/upi-transaction-dashboard)
 > Power BI · DAX · Power Query
 
@@ -73,9 +82,9 @@ Computed **65+ financial ratios** across **100+ companies** for FY2020–FY2024.
 ## 💼 Experience
 
 **Self-Directed Build** · AI Developer & Financial Analyst *(Jun 2026)*
-- Built and deployed a live AI Equity Research tool on Hugging Face Spaces (`LumoraX/equity-research-pro`)
-- Integrated Google Gemini 2.5 Flash API to parse and analyze annual report PDFs (extracting 20–25 fields per year)
-- Developed sector-specific benchmarking (16 sectors) and qualitative warning-flag algorithms (audit, going concern)
+- **AI Prompt Studio**: Built and deployed a live client-side multi-model workspace in React 19 & Tailwind CSS v4 to compile model-optimized prompts and bridge chat contexts (`LumoraX/ai-prompt-studio`).
+- **AI Equity Research Tool**: Deployed a Streamlit app parsing report PDFs with Google Gemini 2.5 Flash and a 12-sector scoring engine (`LumoraX/equity-research-pro`).
+- Developed sector-specific benchmarking (16 sectors) and qualitative warning-flag algorithms (audit, going concern).
 
 **UptoSkills India** · Finance Intern & Team Captain *(Jan 2026 – May 2026)*
 - Led and managed a team of interns to conduct a comprehensive **Financial Parameter Analysis** of **100+ public companies** (FY2020–FY2024)
