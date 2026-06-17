@@ -22,8 +22,13 @@ jobs:
         with:
           root_file: resume.tex
 
+      - name: Move PDF to resume folder
+        run: |
+          mkdir -p resume
+          mv resume.pdf resume/resume.pdf
+
       - name: Commit and push compiled PDF
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "[skip ci] Auto-compiled resume.pdf"
-          file_pattern: "resume.pdf"
+          file_pattern: "resume/resume.pdf"
